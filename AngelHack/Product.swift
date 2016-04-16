@@ -7,7 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 class Product {
-    
+    var name: String?
+    var id: String?
+    var image: UIImage?
 }
