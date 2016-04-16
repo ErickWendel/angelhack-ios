@@ -1,5 +1,5 @@
 //
-//  Promotion.swift
+//  Market.swift
 //  AngelHack
 //
 //  Created by Jean Paul Marinho on 16/04/16.
@@ -7,11 +7,9 @@
 //
 
 import Foundation
+import CoreLocation
 
-class Promotion {
+class Market {
     var name: String?
-    var market: Market?
-    var price: Float?
-    var product: Product?
-    var productDate: ProductDate?
+    var placemark: CLPlacemark?
 }
