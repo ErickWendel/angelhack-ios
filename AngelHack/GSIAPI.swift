@@ -24,8 +24,9 @@ class GSIAPI: NSObject {
         request.HTTPMethod = "POST"
         
         do {
-            let json = ["codeType": "GTIN", "code": code]
-            let data = try NSJSONSerialization.dataWithJSONObject(json, options: [])
+            let json = "code=\(code)&codeType=GTIN"
+//            let json = ["codeType": "GTIN", "code": code]
+            let data = json.dataUsingEncoding(NSUTF8StringEncoding)
         
             request.timeoutInterval = 60
             request.HTTPBody = data

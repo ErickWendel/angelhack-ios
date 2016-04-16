@@ -15,7 +15,7 @@ class AppDataDelegate {
 class AppData {
     static let sharedInstance = AppData()
     var delegate: AppDataDelegate?
-    var promotionsArray: [Promotion]
+    var promotionsArray: [Promotion]?
 
     class func getPromotions() {
         let promotion = Promotion()
