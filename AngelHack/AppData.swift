@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class AppDataDelegate {
     
@@ -18,6 +19,7 @@ class AppData {
     var promotionsArray: [Promotion]?
 
     class func getPromotions() {
+        Alamofire.request(.GET, "https://httpbin.org/get")
         let promotion = Promotion()
         promotion.name = "Fandangos 50%OFF"
     }
