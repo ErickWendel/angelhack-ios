@@ -14,6 +14,8 @@
 		A2172E531CC2E52000DC7188 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E521CC2E52000DC7188 /* Promotion.swift */; };
 		A2172E551CC2E59300DC7188 /* ProductDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E541CC2E59300DC7188 /* ProductDate.swift */; };
 		A2172E571CC2E6E900DC7188 /* AppLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E561CC2E6E900DC7188 /* AppLocation.swift */; };
+		A219EA2A1CC2F42100C437C1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A219EA291CC2F42100C437C1 /* Product.swift */; };
+		A219EA2C1CC2F46F00C437C1 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = A219EA2B1CC2F46F00C437C1 /* Market.swift */; };
 		A2845EFC1CC2DDE500791CC8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845EFB1CC2DDE500791CC8 /* HomeViewController.swift */; };
 		A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845F001CC2DFC600791CC8 /* AppData.swift */; };
 		A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 		A2172E521CC2E52000DC7188 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		A2172E541CC2E59300DC7188 /* ProductDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDate.swift; sourceTree = "<group>"; };
 		A2172E561CC2E6E900DC7188 /* AppLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocation.swift; sourceTree = "<group>"; };
+		A219EA291CC2F42100C437C1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A219EA2B1CC2F46F00C437C1 /* Market.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		A2845EFB1CC2DDE500791CC8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A2845F001CC2DFC600791CC8 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A2B3CE411CC2A554004ABBAA /* AngelHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngelHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,8 @@
 				A2845F001CC2DFC600791CC8 /* AppData.swift */,
 				A2172E561CC2E6E900DC7188 /* AppLocation.swift */,
 				A2172E521CC2E52000DC7188 /* Promotion.swift */,
+				A219EA291CC2F42100C437C1 /* Product.swift */,
+				A219EA2B1CC2F46F00C437C1 /* Market.swift */,
 				A2172E541CC2E59300DC7188 /* ProductDate.swift */,
 			);
 			name = Model;
@@ -208,11 +214,13 @@
 				8C6CFEDE1CC2F5A10016AF89 /* GSIAPI.swift in Sources */,
 				A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */,
 				A2172E551CC2E59300DC7188 /* ProductDate.swift in Sources */,
+				A219EA2C1CC2F46F00C437C1 /* Market.swift in Sources */,
 				A2172E531CC2E52000DC7188 /* Promotion.swift in Sources */,
 				8C6CFEE11CC2F5FD0016AF89 /* ProductDetailViewController.swift in Sources */,
 				8C6CFEE31CC2F68E0016AF89 /* BarCodeViewController.swift in Sources */,
 				A2845EFC1CC2DDE500791CC8 /* HomeViewController.swift in Sources */,
 				A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */,
+				A219EA2A1CC2F42100C437C1 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
