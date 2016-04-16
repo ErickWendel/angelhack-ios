@@ -14,4 +14,6 @@ class Promotion {
     var price: Float?
     var product: Product?
     var productDate: ProductDate?
+    
+    
 }
