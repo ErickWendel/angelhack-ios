@@ -62,8 +62,12 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 qrCodeFrameView.frame = barCodeObject.bounds
 
                 self.session.stopRunning()
-                self.navigationController?.popViewControllerAnimated(true)
-                self.delegate?.barcodeReaded(barCode)
+//                let vc = storyboard?.instantiateViewControllerWithIdentifier("ProductDetailViewController")
+//                self.navigationController?.pushViewController(vc!, animated: true)
+//                self.delegate?.barcodeReaded(barCode)
+                print(barCode)
+                GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
+                
             }
         }
     }

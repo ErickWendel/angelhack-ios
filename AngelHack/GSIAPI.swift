@@ -15,6 +15,7 @@ class GSIAPI: NSObject {
     static let sharedInstance = GSIAPI()
     
     func makeHTTPGetRequest(code: String) {
+        print(code)
         let baseURL = "http://inbar-producao-ws.azurewebsites.net/search"
         
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL)!)
@@ -22,9 +23,9 @@ class GSIAPI: NSObject {
         
         request.HTTPMethod = "POST"
         
-        do{
-            let json = ["codeType":"GTIN", "code": code]
-            let data = try NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+        do {
+            let json = ["codeType": "GTIN", "code": code]
+            let data = try NSJSONSerialization.dataWithJSONObject(json, options: [])
         
             request.timeoutInterval = 60
             request.HTTPBody = data
@@ -32,6 +33,7 @@ class GSIAPI: NSObject {
             request.addValue("hackathon-team-01188", forHTTPHeaderField: "deviceid")
             request.addValue("no-cache", forHTTPHeaderField: "cache-control")
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
+            print(request)
             var finalResult: NSDictionary?
             let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
                 guard data != nil else {
@@ -39,8 +41,7 @@ class GSIAPI: NSObject {
                     return
                 }
             
-            
-                do{
+                do {
                     let jsonResult: NSDictionary! = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? NSDictionary
                 
                     if jsonResult != nil {
@@ -48,7 +49,7 @@ class GSIAPI: NSObject {
                         finalResult = jsonResult
                     }
                 
-                }catch let err {
+                } catch let err {
                     print("Errorrrrrrrr \(err)")
                 }
             

@@ -11,6 +11,9 @@
 		8C6CFEDE1CC2F5A10016AF89 /* GSIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6CFEDD1CC2F5A10016AF89 /* GSIAPI.swift */; };
 		8C6CFEE11CC2F5FD0016AF89 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6CFEE01CC2F5FD0016AF89 /* ProductDetailViewController.swift */; };
 		8C6CFEE31CC2F68E0016AF89 /* BarCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */; };
+		8C6CFEED1CC2F95C0016AF89 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6CFEEA1CC2F95C0016AF89 /* Bolts.framework */; };
+		8C6CFEEE1CC2F95C0016AF89 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6CFEEB1CC2F95C0016AF89 /* Parse.framework */; };
+		8C6CFEEF1CC2F95C0016AF89 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6CFEEC1CC2F95C0016AF89 /* ParseUI.framework */; };
 		A2172E531CC2E52000DC7188 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E521CC2E52000DC7188 /* Promotion.swift */; };
 		A2172E551CC2E59300DC7188 /* ProductDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E541CC2E59300DC7188 /* ProductDate.swift */; };
 		A2172E571CC2E6E900DC7188 /* AppLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2172E561CC2E6E900DC7188 /* AppLocation.swift */; };
@@ -38,6 +41,9 @@
 		8C6CFEDD1CC2F5A10016AF89 /* GSIAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSIAPI.swift; sourceTree = "<group>"; };
 		8C6CFEE01CC2F5FD0016AF89 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCodeViewController.swift; sourceTree = "<group>"; };
+		8C6CFEEA1CC2F95C0016AF89 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		8C6CFEEB1CC2F95C0016AF89 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		8C6CFEEC1CC2F95C0016AF89 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		A2172E521CC2E52000DC7188 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		A2172E541CC2E59300DC7188 /* ProductDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDate.swift; sourceTree = "<group>"; };
 		A2172E561CC2E6E900DC7188 /* AppLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocation.swift; sourceTree = "<group>"; };
@@ -75,8 +81,11 @@
 				A219EA361CC2F81600C437C1 /* QuartzCore.framework in Frameworks */,
 				A219EA341CC2F80F00C437C1 /* CoreLocation.framework in Frameworks */,
 				A219EA321CC2F80700C437C1 /* CoreGraphics.framework in Frameworks */,
+				8C6CFEED1CC2F95C0016AF89 /* Bolts.framework in Frameworks */,
 				A219EA301CC2F80000C437C1 /* CFNetwork.framework in Frameworks */,
+				8C6CFEEE1CC2F95C0016AF89 /* Parse.framework in Frameworks */,
 				A219EA2E1CC2F7EB00C437C1 /* AudioToolbox.framework in Frameworks */,
+				8C6CFEEF1CC2F95C0016AF89 /* ParseUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +103,9 @@
 		A23B2ACC1CC2E0E000DE299D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C6CFEEA1CC2F95C0016AF89 /* Bolts.framework */,
+				8C6CFEEB1CC2F95C0016AF89 /* Parse.framework */,
+				8C6CFEEC1CC2F95C0016AF89 /* ParseUI.framework */,
 				A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */,
 				A219EA3D1CC2F83300C437C1 /* libz.tbd */,
 				A219EA3B1CC2F82C00C437C1 /* SystemConfiguration.framework */,
