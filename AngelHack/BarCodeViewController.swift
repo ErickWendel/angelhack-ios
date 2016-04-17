@@ -46,15 +46,19 @@ class BarCodeViewController: UIViewController {
         let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
         
         var titleTextField: UITextField?
-        titleTextField?.keyboardType = UIKeyboardType.DecimalPad
-        titleTextField?.textAlignment = NSTextAlignment.Center
         titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
             titleTextField = textField
             textField.placeholder = ""
+            textField.keyboardType = UIKeyboardType.DecimalPad
+            textField.textAlignment = NSTextAlignment.Center
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
         titlePrompt.addAction(cancelAction)
         titlePrompt.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let count = titleTextField?.text?.characters.count
+            if count != 8 || count != 13 || count != 14 {
+                return
+            }
             self.barcodeReader?.stopCapturing()
             self.barcodeReader?.removeFromSuperview()
             AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")

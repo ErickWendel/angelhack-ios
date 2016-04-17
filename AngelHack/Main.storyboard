@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="287"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fSr-4Y-0bF">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="336"/>
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -93,6 +93,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ckz-Hh-JY9" secondAttribute="trailing" constant="-20" id="Acg-Qx-HdE"/>
+                            <constraint firstItem="e2l-Bf-Beh" firstAttribute="top" secondItem="fSr-4Y-0bF" secondAttribute="bottom" id="Ado-OV-6Kz"/>
                             <constraint firstItem="fSr-4Y-0bF" firstAttribute="top" secondItem="6CM-CP-cSe" secondAttribute="bottom" id="Cku-Qc-Q3D"/>
                             <constraint firstItem="fSr-4Y-0bF" firstAttribute="leading" secondItem="BVD-Pl-Jtb" secondAttribute="leadingMargin" constant="-20" id="Mf7-Q7-R65"/>
                             <constraint firstItem="ckz-Hh-JY9" firstAttribute="leading" secondItem="BVD-Pl-Jtb" secondAttribute="leadingMargin" constant="-20" id="TBF-ax-NAA"/>
@@ -101,6 +102,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="fSr-4Y-0bF" secondAttribute="trailing" constant="-20" id="gKd-oX-UBF"/>
                             <constraint firstItem="e2l-Bf-Beh" firstAttribute="top" secondItem="ckz-Hh-JY9" secondAttribute="bottom" id="jIe-eb-dYx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cS4-FN-Qoo"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Meus Produtos" id="IUa-d8-Awd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
