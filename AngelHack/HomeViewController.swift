@@ -32,13 +32,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableView.alpha = 1
             self.msgLbl.alpha = 1
         }
+        AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
+        AppData.getMarkets()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
-        AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
-        AppData.getMarkets()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {

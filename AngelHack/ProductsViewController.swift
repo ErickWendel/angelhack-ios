@@ -16,13 +16,13 @@ class ProductsViewController: UIViewController {
         super.viewDidLoad()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        AppNotifications.showLoadingIndicator("Carregando Produtos...")
+        AppData.getProducts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
-        AppNotifications.showLoadingIndicator("Carregando Produtos...")
-        AppData.getProducts()
     }
 }
 
@@ -34,11 +34,12 @@ extension ProductsViewController: UICollectionViewDataSource {
         if AppData.sharedInstance.productsArray == nil {
             return 0
         }
-        return (AppData.sharedInstance.marketsArray?.count)!
+//        return (AppData.sharedInstance.marketsArray?.count)!
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return (AppData.sharedInstance.productsArray?.count)!
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
