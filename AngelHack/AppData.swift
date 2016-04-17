@@ -25,7 +25,7 @@ class AppData {
     var promotionsArray: [Promotion]?
     var productsArray: [Product]?
     var marketsArray: [Market]?
-    var currentMarket: Market?
+    var currentMarketIndex: Int?
 
     class func getPromotions() {
         AppData.sharedInstance.promotionsArray = Array()
@@ -64,7 +64,7 @@ class AppData {
     
     class func sendProduct(product: Product) {
         let query = PFQuery(className: "Market")
-        query.getObjectInBackgroundWithId((AppData.sharedInstance.currentMarket?.objectID!)!) { (object: PFObject?, error: NSError?) in
+        query.getObjectInBackgroundWithId((AppData.sharedInstance.marketsArray?[AppData.sharedInstance.currentMarketIndex!].objectID!)!) { (object: PFObject?, error: NSError?) in
             let productObject = PFObject(className: "Product")
             productObject["name"] = product.name!
             productObject["id"] = product.id!
@@ -107,7 +107,7 @@ class AppData {
                     market.longitude = object["longitude"] as? String
                     market.address = object["address"] as? String
                     if latitude == AppLocation.sharedInstance.latitude! {
-                        AppData.sharedInstance.currentMarket = market
+                        AppData.sharedInstance.currentMarketIndex = AppData.sharedInstance.marketsArray?.count
                     }
                     AppData.sharedInstance.marketsArray?.append(market)
                 }

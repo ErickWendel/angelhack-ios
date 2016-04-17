@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
             self.barcodeButton.alpha = 1
             self.msgLbl.alpha = 1
         }
+        AppData.getMarkets()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
