@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
             })
 
         }
+        AppData.getMarkets()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
