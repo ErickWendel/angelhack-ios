@@ -91,6 +91,8 @@ extension BarCodeViewController: AppDataDelegate {
         }
         self.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
         self.view.setNeedsDisplay()
+        self.barcodeReader?.stopCapturing()
+        self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         self.barcodeReader?.startCapturing()
         self.view.insertSubview(barcodeReader!, belowSubview: self.productModal)
     }
