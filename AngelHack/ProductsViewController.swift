@@ -11,13 +11,26 @@ import UIKit
 class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    var refreshControl: UIRefreshControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.tintColor = UIColor.whiteColor()
+        let attributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(17)]
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar...", attributes: attributes)
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl)
         AppNotifications.showLoadingIndicator("Carregando Produtos...")
         AppData.getProducts()
     }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if AppData.sharedInstance.productsArray == nil {
