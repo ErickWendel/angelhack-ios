@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
-        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
+        AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
         AppData.getMarkets()
     }
     

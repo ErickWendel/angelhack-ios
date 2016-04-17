@@ -42,7 +42,7 @@ extension ProductsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let product = AppData.sharedInstance.productsArray?[0]
+        let product = AppData.sharedInstance.productsArray?[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ProductsCollectionViewCell
         guard let imgURL = NSURL(string: (product?.image)!) else {
             return UICollectionViewCell()
