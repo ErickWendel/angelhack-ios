@@ -8,59 +8,53 @@
 
 import UIKit
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        
         AppNotifications.showLoadingIndicator("Carregando Produtos...")
         AppData.getProducts()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if AppData.sharedInstance.productsArray == nil {
+            return 0
+        }
+        //        return (AppData.sharedInstance.marketsArray?.count)!
+        return (AppData.sharedInstance.productsArray?.count)!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let product = AppData.sharedInstance.productsArray?[indexPath.section]
+        let cell = tableView.dequeueReusableCellWithIdentifier("Products") as! PromotionsTableViewCell
+        guard let imgURL = NSURL(string: (product?.image)!) else {
+            return UITableViewCell()
+        }
+        cell.imgPromotion.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
+        cell.lblPromotion.text = product?.name!
+        return cell
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
     }
-}
-
-
-
-extension ProductsViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        if AppData.sharedInstance.productsArray == nil {
-            return 0
-        }
-//        return (AppData.sharedInstance.marketsArray?.count)!
-        return 1
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (AppData.sharedInstance.productsArray?.count)!
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let product = AppData.sharedInstance.productsArray?[indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ProductsCollectionViewCell
-        guard let imgURL = NSURL(string: (product?.image)!) else {
-            return UICollectionViewCell()
-        }
-        cell.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
-        cell.label.text = product?.name!
-        return cell
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 4
     }
 }
-
-
-
-extension ProductsViewController: UICollectionViewDelegate {
-    
-}
-
-
 
 extension ProductsViewController: AppDataDelegate {
     func productIsReadyToShow(product: Product) {
@@ -81,7 +75,7 @@ extension ProductsViewController: AppDataDelegate {
     func getProductsWithSuccess(success: Bool) {
         AppNotifications.hideLoadingIndicator()
         if success == true {
-            self.collectionView.reloadData()
+            self.tableView.reloadData()
         }
     }
 }
