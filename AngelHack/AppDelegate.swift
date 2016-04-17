@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.setApplicationId("Oe0FNnApDBM1dPpjG5eAGzLr2eScSSaGLl4XtNdU",
                                clientKey: "zCMxjNIFsNbWM1dzJhB9lMa5WshT8goMMimPkmZ0")
+        
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+
 //        let configuration = ParseClientConfiguration {
 //            $0.applicationId = "Oe0FNnApDBM1dPpjG5eAGzLr2eScSSaGLl4XtNdU"
 //        }
