@@ -33,6 +33,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.tableView.alpha = 1
             self.msgLbl.alpha = 1
         }
+        AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
+        AppData.getMarkets()
     }
     
     override func viewDidAppear(animated: Bool) {

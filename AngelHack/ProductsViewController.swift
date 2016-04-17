@@ -16,13 +16,13 @@ class ProductsViewController: UIViewController {
         super.viewDidLoad()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        AppNotifications.showLoadingIndicator("Carregando Produtos...")
+        AppData.getProducts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
-        AppNotifications.showLoadingIndicator("Carregando Produtos...")
-        AppData.getProducts()
     }
 }
 
@@ -34,15 +34,16 @@ extension ProductsViewController: UICollectionViewDataSource {
         if AppData.sharedInstance.productsArray == nil {
             return 0
         }
-        return (AppData.sharedInstance.marketsArray?.count)!
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return (AppData.sharedInstance.marketsArray?.count)!
         return 1
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (AppData.sharedInstance.productsArray?.count)!
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let product = AppData.sharedInstance.productsArray?[0]
+        let product = AppData.sharedInstance.productsArray?[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ProductsCollectionViewCell
         guard let imgURL = NSURL(string: (product?.image)!) else {
             return UICollectionViewCell()
