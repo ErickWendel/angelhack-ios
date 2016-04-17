@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                clientKey: "zCMxjNIFsNbWM1dzJhB9lMa5WshT8goMMimPkmZ0")
         
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        
+        if self.window!.rootViewController as? UITabBarController != nil {
+            let tababarController = self.window!.rootViewController as! UITabBarController
+            tababarController.selectedIndex = 1
+        }
 
         let types:UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)

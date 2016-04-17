@@ -9,66 +9,38 @@
 import UIKit
 import AVFoundation
 import AlamofireImage
+import BarCodeReaderView
 
 protocol BarcodeDelegate {
     func barcodeReaded(barcode: String)
 }
 
-class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AppDataDelegate {
+class BarCodeViewController: UIViewController {
     
-    let session = AVCaptureSession()
-    var previewLayer: AVCaptureVideoPreviewLayer?
-    var delegate: BarcodeDelegate?
-    let qrCodeFrameView: UIView = UIView()
+    var barcodeReader: BarcodeReaderView?
     var product: Product?
-    
     @IBOutlet weak var productModal: UIView!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var imgCarrinho: UIImageView!
     
-    func addPreviewLayer() {
-        previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        previewLayer?.bounds = self.view.bounds
-        previewLayer?.position = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
-        self.view.layer.addSublayer(previewLayer!)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.view.addSubview(barcodeReader!)
+        self.barcodeReader!.delegate = self
+        self.barcodeReader!.barCodeTypes = [.EAN13Code]
         self.productName.numberOfLines = 0
-        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        do {
-            let inputDevice = try AVCaptureDeviceInput(device: captureDevice)
-            session.addInput(inputDevice)
-            addPreviewLayer()
-            
-            qrCodeFrameView.layer.borderColor = UIColor.greenColor().CGColor
-            qrCodeFrameView.layer.borderWidth = 2
-            view.addSubview(qrCodeFrameView)
-            view.bringSubviewToFront(qrCodeFrameView)
-            
-            let output = AVCaptureMetadataOutput()
-            session.addOutput(output)
-            output.metadataObjectTypes = output.availableMetadataObjectTypes
-            output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-            session.startRunning()
-        } catch {
-            print("error")
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
         imgCarrinho.layer.zPosition = 100
+        self.barcodeReader!.startCapturing()
     }
     
     func productModalHandle () {
-        session.stopRunning()
-        addPreviewLayer()
-        session.startRunning()
         self.productModal.hidden = true
         self.imgCarrinho.hidden = false
         self.productImage.image = nil
@@ -83,24 +55,26 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         AppNotifications.showLoadingIndicator("Adicionando à sua lista...")
         AppData.sendProduct(self.product!)
     }
-    
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        for metadata in metadataObjects {
-            let readableObject = metadata as? AVMetadataMachineReadableCodeObject
-            if readableObject != nil {
-                let barCode = readableObject!.stringValue
-                if !barCode.isEmpty {
-                    let barCodeObject = previewLayer!.transformedMetadataObjectForMetadataObject(metadataObjects[0] as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
-                    qrCodeFrameView.frame = barCodeObject.bounds
-                    self.session.stopRunning()
-                    self.previewLayer?.removeFromSuperlayer()
-                    print(barCode)
-                    AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
-                    GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
-                }
-            }
-        }
+}
+
+
+
+extension BarCodeViewController: BarcodeReaderViewDelegate {
+    func barcodeReader(barcodeReader: BarcodeReaderView, didFailReadingWithError error: NSError) {
+        // handle error
     }
+
+    func barcodeReader(barcodeReader: BarcodeReaderView, didFinishReadingString info: String) {
+        self.barcodeReader?.stopCapturing()
+        self.barcodeReader?.removeFromSuperview()
+        AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
+        GSIAPI.sharedInstance.makeHTTPGetRequest(info)
+    }
+}
+
+
+
+extension BarCodeViewController: AppDataDelegate {
     
     func productIsReadyToShow(product: Product) {
         self.product = product
@@ -112,22 +86,28 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         guard let img = product.image else {
             return
         }
-        
         guard let imgURL = NSURL(string: img) else {
             return
         }
-        
         self.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
-        
         self.view.setNeedsDisplay()
-
+        self.barcodeReader?.stopCapturing()
+        self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.barcodeReader?.startCapturing()
+        self.view.insertSubview(barcodeReader!, belowSubview: self.productModal)
     }
     
     func sendProductWithSuccess(success: Bool) {
         AppNotifications.hideLoadingIndicator()
-        AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
-            self.productModalHandle()
+        if success == true {
+            AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
+            }
         }
+        else {
+            AppNotifications.showAlertController("Item já existe no banco de dados. Por favor, adicione um item diferente", message: nil, presenter: self) { (UIAlertAction) in
+            }
+        }
+        self.productModalHandle()
     }
     
     func getMarketsWithSuccess(success: Bool) {

@@ -12,6 +12,7 @@ class PromotionsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgPromotion: UIImageView!
     @IBOutlet weak var lblPromotion: UILabel!
+    @IBOutlet weak var labelPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

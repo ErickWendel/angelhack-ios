@@ -25,7 +25,7 @@ class AppData {
     var promotionsArray: [Promotion]?
     var productsArray: [Product]?
     var marketsArray: [Market]?
-    var currentMarket: Market?
+    var currentMarketIndex: Int?
 
     class func getPromotions() {
         AppData.sharedInstance.promotionsArray = Array()
@@ -37,12 +37,14 @@ class AppData {
                 promotion.campaignName = object["campaignName"] as? String
                 promotion.price = object["price"] as? Float
                 
-                let prod = object["product"] as! PFObject
+                let prod = object["product"] as? PFObject
                 let product = Product()
-                product.image = prod["image"] as? String
-                promotion.product = product
-                AppData.sharedInstance.promotionsArray?.append(promotion)
-                AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
+                if prod != nil {
+                    product.image = prod!["image"] as? String
+                    promotion.product = product
+                    AppData.sharedInstance.promotionsArray?.append(promotion)
+                    AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
+                }
             }
         }
     }
@@ -64,16 +66,25 @@ class AppData {
     
     class func sendProduct(product: Product) {
         let query = PFQuery(className: "Market")
-        query.getObjectInBackgroundWithId((AppData.sharedInstance.currentMarket?.objectID!)!) { (object: PFObject?, error: NSError?) in
-            let productObject = PFObject(className: "Product")
-            productObject["name"] = product.name!
-            productObject["id"] = product.id!
-            productObject["image"] = product.image!
-            let relation = productObject.relationForKey("market")
-            relation.addObject(object!)
-            productObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
-                AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
-            }
+        query.getObjectInBackgroundWithId((AppData.sharedInstance.marketsArray?[AppData.sharedInstance.currentMarketIndex!].objectID!)!) { (object: PFObject?, error: NSError?) in
+            let queryProduct = PFQuery(className: "Product")
+            queryProduct.whereKey("id", equalTo: product.id!)
+            queryProduct.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
+                if objects?.count == 0 {
+                    let productObject = PFObject(className: "Product")
+                    productObject["name"] = product.name!
+                    productObject["id"] = product.id!
+                    productObject["image"] = product.image!
+                    let relation = productObject.relationForKey("market")
+                    relation.addObject(object!)
+                    productObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
+                        AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
+                    }
+                } else {
+                    print("ja existe")
+                    AppData.sharedInstance.delegate?.sendProductWithSuccess(false)
+                }
+            })
         }
     }
     
@@ -107,7 +118,7 @@ class AppData {
                     market.longitude = object["longitude"] as? String
                     market.address = object["address"] as? String
                     if latitude == AppLocation.sharedInstance.latitude! {
-                        AppData.sharedInstance.currentMarket = market
+                        AppData.sharedInstance.currentMarketIndex = AppData.sharedInstance.marketsArray?.count
                     }
                     AppData.sharedInstance.marketsArray?.append(market)
                 }

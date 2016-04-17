@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F18b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="mdL-v9-jaW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
@@ -22,32 +22,48 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="iGF-zd-GRd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="x51-Or-7CA">
-                                <rect key="frame" x="40" y="161" width="520" height="278"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="x51-Or-7CA" secondAttribute="height" multiplier="200:107" id="sK5-Am-zvm"/>
-                                </constraints>
-                            </imageView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdq-YJ-6H0">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items/>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iGF-zd-GRd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="9bs-qO-0q7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cdq-YJ-6H0" secondAttribute="trailing" constant="-20" id="Hiu-gP-Anc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iGF-zd-GRd" secondAttribute="trailing" constant="-20" id="Pmp-dl-PMl"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="cdq-YJ-6H0" secondAttribute="bottom" id="VsJ-PG-87Z"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="iGF-zd-GRd" secondAttribute="bottom" id="Xml-Ja-6w6"/>
                             <constraint firstItem="iGF-zd-GRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="ZYo-RG-2bP"/>
-                            <constraint firstItem="x51-Or-7CA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wJ0-qq-pbr"/>
-                            <constraint firstItem="x51-Or-7CA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="wjv-iT-3aT"/>
-                            <constraint firstItem="x51-Or-7CA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zd2-iJ-WzV"/>
+                            <constraint firstItem="cdq-YJ-6H0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="eKh-EN-Ik8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="f1j-f3-zzz"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="115" y="825"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0ZE-jH-not">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mdL-v9-jaW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxu-dz-Phe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="01J-lp-oVM" kind="relationship" relationship="rootViewController" id="jqX-fh-4q0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vG9-N3-jZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115" y="147"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LOGO" width="2090" height="1193"/>
         <image name="background" width="1606" height="2363"/>
     </resources>
 </document>

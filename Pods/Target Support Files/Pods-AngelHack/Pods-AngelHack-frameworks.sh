@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-AngelHack/Alamofire.framework"
   install_framework "Pods-AngelHack/AlamofireImage.framework"
+  install_framework "Pods-AngelHack/BarCodeReaderView.framework"
   install_framework "Pods-AngelHack/SwiftSpinner.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-AngelHack/Alamofire.framework"
   install_framework "Pods-AngelHack/AlamofireImage.framework"
+  install_framework "Pods-AngelHack/BarCodeReaderView.framework"
   install_framework "Pods-AngelHack/SwiftSpinner.framework"
 fi
