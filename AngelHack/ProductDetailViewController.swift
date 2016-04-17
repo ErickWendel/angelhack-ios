@@ -20,7 +20,7 @@ class ProductDetailViewController: UIViewController, BarcodeDelegate {
     }
     
     func barcodeReaded(barcode: String) {
-        let api = GSIAPI().makeHTTPGetRequest(barcode)
+        _ = GSIAPI().makeHTTPGetRequest(barcode)
         
     }
 
