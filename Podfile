@@ -5,5 +5,6 @@ use_frameworks!
 target 'AngelHack' do
 pod 'Alamofire'
 pod 'AlamofireImage'
+pod 'SwiftSpinner', '~> 0.8.0'
 end
 

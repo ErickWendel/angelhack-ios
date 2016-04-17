@@ -186,7 +186,7 @@
             </objects>
             <point key="canvasLocation" x="484" y="1203"/>
         </scene>
-        <!--Bar Code View Controller-->
+        <!--Barcode Scanner-->
         <scene sceneID="hbr-qK-sbM">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="HWs-OM-L29" customClass="BarCodeViewController" customModule="AngelHack" customModuleProvider="target" sceneMemberID="viewController">
@@ -198,34 +198,86 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
-                                <rect key="frame" x="0.0" y="400" width="600" height="151"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrinho" translatesAutoresizingMaskIntoConstraints="NO" id="zSK-HP-hON">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
+                                <rect key="frame" x="0.0" y="351" width="600" height="200"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-C8-39A" userLabel="Black Background">
-                                        <rect key="frame" x="0.0" y="31" width="600" height="120"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-C8-39A" userLabel="Black Background">
+                                        <rect key="frame" x="0.0" y="27" width="600" height="173"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voV-sU-XEF">
-                                                <rect key="frame" x="184" y="49" width="408" height="21"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nu2-aI-Fvp">
+                                                <rect key="frame" x="8" y="33" width="130" height="130"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="2xp-Wx-Vc4"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voV-sU-XEF">
+                                                <rect key="frame" x="146" y="33" width="446" height="130"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-PZ-trb" userLabel="Product Image">
-                                                <rect key="frame" x="76" y="10" width="100" height="100"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="voV-sU-XEF" firstAttribute="leading" secondItem="nu2-aI-Fvp" secondAttribute="trailing" constant="8" symbolic="YES" id="4qF-z3-zTv"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="leading" secondItem="rSh-C8-39A" secondAttribute="leadingMargin" id="Rcr-wP-e75"/>
+                                            <constraint firstItem="voV-sU-XEF" firstAttribute="trailing" secondItem="rSh-C8-39A" secondAttribute="trailingMargin" id="Xoj-dS-0pz"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="bottom" secondItem="voV-sU-XEF" secondAttribute="bottom" id="ktU-1r-kP9"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="top" secondItem="voV-sU-XEF" secondAttribute="top" id="mEs-vc-Xrl"/>
+                                            <constraint firstAttribute="bottom" secondItem="nu2-aI-Fvp" secondAttribute="bottom" constant="10" id="o38-Q8-NuS"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="top" secondItem="rSh-C8-39A" secondAttribute="top" constant="33" id="vMO-bt-7BH"/>
+                                        </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-se-VpT">
-                                        <rect key="frame" x="19" y="14" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-se-VpT">
+                                        <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                        <state key="normal" image="icon-cancel-color"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="HWs-OM-L29" eventType="touchUpInside" id="gy2-X9-TCw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anb-I0-FWa">
+                                        <rect key="frame" x="542" y="0.0" width="50" height="50"/>
+                                        <state key="normal" image="icon-check-color"/>
+                                        <connections>
+                                            <action selector="checkButtonPressed:" destination="HWs-OM-L29" eventType="touchUpInside" id="h0h-S7-tgU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="rSh-C8-39A" secondAttribute="bottom" id="1Lw-SU-sok"/>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="top" secondItem="i0v-BH-epk" secondAttribute="top" id="1Ti-th-zer"/>
+                                    <constraint firstItem="Anb-I0-FWa" firstAttribute="trailing" secondItem="i0v-BH-epk" secondAttribute="trailingMargin" id="2JU-10-bhh"/>
+                                    <constraint firstAttribute="height" constant="200" id="EZr-iw-jYc"/>
+                                    <constraint firstAttribute="trailing" secondItem="rSh-C8-39A" secondAttribute="trailing" id="Fv5-Xf-NdX"/>
+                                    <constraint firstItem="rSh-C8-39A" firstAttribute="top" secondItem="i0v-BH-epk" secondAttribute="top" constant="27" id="PbX-0s-IbB"/>
+                                    <constraint firstItem="rSh-C8-39A" firstAttribute="leading" secondItem="i0v-BH-epk" secondAttribute="leading" id="S1W-Ng-lk4"/>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="top" secondItem="Anb-I0-FWa" secondAttribute="top" id="VkI-Zy-WK3"/>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="leading" secondItem="i0v-BH-epk" secondAttribute="leadingMargin" id="siu-Du-cyS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zSK-HP-hON" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="BZE-v1-qp9"/>
+                            <constraint firstItem="zSK-HP-hON" firstAttribute="top" secondItem="Fqb-ym-9kL" secondAttribute="bottom" id="D3k-Gu-cCu"/>
+                            <constraint firstAttribute="trailing" secondItem="zSK-HP-hON" secondAttribute="trailing" id="Fvy-d5-clY"/>
+                            <constraint firstItem="NUM-ED-8e4" firstAttribute="top" secondItem="zSK-HP-hON" secondAttribute="bottom" id="Gg2-13-zym"/>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="LhV-Ax-UsS"/>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="a2A-Oc-yzy"/>
+                            <constraint firstAttribute="trailing" secondItem="i0v-BH-epk" secondAttribute="trailing" id="xn3-3d-2f8"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Barcode Scanner" id="76g-q6-6ck"/>
+                    <connections>
+                        <outlet property="imgCarrinho" destination="zSK-HP-hON" id="Wmo-1k-Cfn"/>
+                        <outlet property="productImage" destination="nu2-aI-Fvp" id="d8q-AA-uvs"/>
+                        <outlet property="productModal" destination="i0v-BH-epk" id="ZFy-ms-8hx"/>
+                        <outlet property="productName" destination="voV-sU-XEF" id="Zxo-fG-RYq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSl-dQ-MlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
