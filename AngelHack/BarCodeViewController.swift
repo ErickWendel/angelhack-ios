@@ -25,6 +25,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     @IBOutlet weak var productModal: UIView!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var imgCarrinho: UIImageView!
     
     func addPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
@@ -61,6 +62,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
+        imgCarrinho.layer.zPosition = 100
     }
     
     func productModalHandle () {
@@ -68,6 +70,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         addPreviewLayer()
         session.startRunning()
         self.productModal.hidden = true
+        self.imgCarrinho.hidden = false
         self.productImage.image = nil
         self.productName.text = ""
     }
@@ -94,9 +97,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     print(barCode)
                     AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
                     GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
-                    
                 }
-
             }
         }
     }
@@ -105,6 +106,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.product = product
         AppNotifications.hideLoadingIndicator()
         self.productModal.hidden = false
+        imgCarrinho.hidden = true
         self.navigationController?.title = "Teste"
         self.productName.text = product.name!
         guard let img = product.image else {

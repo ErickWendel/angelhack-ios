@@ -119,6 +119,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrinho" translatesAutoresizingMaskIntoConstraints="NO" id="zSK-HP-hON">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
                                 <rect key="frame" x="0.0" y="351" width="600" height="200"/>
                                 <subviews>
@@ -180,6 +183,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zSK-HP-hON" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="BZE-v1-qp9"/>
+                            <constraint firstItem="zSK-HP-hON" firstAttribute="top" secondItem="Fqb-ym-9kL" secondAttribute="bottom" id="D3k-Gu-cCu"/>
+                            <constraint firstAttribute="trailing" secondItem="zSK-HP-hON" secondAttribute="trailing" id="Fvy-d5-clY"/>
+                            <constraint firstItem="NUM-ED-8e4" firstAttribute="top" secondItem="zSK-HP-hON" secondAttribute="bottom" id="Gg2-13-zym"/>
                             <constraint firstItem="i0v-BH-epk" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="LhV-Ax-UsS"/>
                             <constraint firstItem="i0v-BH-epk" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="a2A-Oc-yzy"/>
                             <constraint firstAttribute="trailing" secondItem="i0v-BH-epk" secondAttribute="trailing" id="xn3-3d-2f8"/>
@@ -187,6 +194,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Barcode Scanner" id="76g-q6-6ck"/>
                     <connections>
+                        <outlet property="imgCarrinho" destination="zSK-HP-hON" id="Wmo-1k-Cfn"/>
                         <outlet property="productImage" destination="nu2-aI-Fvp" id="d8q-AA-uvs"/>
                         <outlet property="productModal" destination="i0v-BH-epk" id="ZFy-ms-8hx"/>
                         <outlet property="productName" destination="voV-sU-XEF" id="Zxo-fG-RYq"/>
@@ -278,6 +286,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="carrinho" width="1500" height="1125"/>
         <image name="icon-cancel-color" width="50" height="50"/>
         <image name="icon-check-color" width="50" height="50"/>
     </resources>
