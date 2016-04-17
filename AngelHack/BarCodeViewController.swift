@@ -20,6 +20,9 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var delegate: BarcodeDelegate?
     let qrCodeFrameView: UIView = UIView()
     
+    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var productName: UILabel!
+    
     func addPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
@@ -51,6 +54,13 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             print("error")
         }
         
+    }
+    
+    
+    @IBAction func closeButtonPressed(sender: UIButton) {
+    }
+    
+    @IBAction func checkButtonPressed(sender: UIButton) {
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {

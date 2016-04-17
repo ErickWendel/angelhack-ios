@@ -130,15 +130,25 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-PZ-trb" userLabel="Product Image">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu2-aI-Fvp">
                                                 <rect key="frame" x="76" y="10" width="100" height="100"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-se-VpT">
-                                        <rect key="frame" x="19" y="14" width="46" height="30"/>
+                                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                                        <state key="normal" image="icon-cancel-color"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="HWs-OM-L29" eventType="touchUpInside" id="gy2-X9-TCw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anb-I0-FWa">
+                                        <rect key="frame" x="542" y="8" width="50" height="50"/>
+                                        <state key="normal" image="icon-check-color"/>
+                                        <connections>
+                                            <action selector="checkButtonPressed:" destination="HWs-OM-L29" eventType="touchUpInside" id="h0h-S7-tgU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,6 +156,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="productImage" destination="nu2-aI-Fvp" id="d8q-AA-uvs"/>
+                        <outlet property="productName" destination="voV-sU-XEF" id="Zxo-fG-RYq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSl-dQ-MlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,4 +246,8 @@
             <point key="canvasLocation" x="484" y="374"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-cancel-color" width="50" height="50"/>
+        <image name="icon-check-color" width="50" height="50"/>
+    </resources>
 </document>
