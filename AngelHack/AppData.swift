@@ -26,7 +26,9 @@ class AppData {
     var productsArray: [Product]?
     var marketsArray: [Market]?
     var currentMarketIndex: Int?
-
+    
+    
+    //Pega todas as promoções do banco de dados
     class func getPromotions() {
         AppData.sharedInstance.promotionsArray = Array()
         let query = PFQuery(className: "Promotion")
@@ -51,11 +53,11 @@ class AppData {
         }
     }
     
+    //Cria uma promoção de acordo com os dados recebidos pela API
     class func setProduct(json: NSDictionary, GTIN: String) {
         if let responseDTO = json["ResponseDTO"] as? NSDictionary {
             if let responseItems = responseDTO["ResponseItems"] as? NSArray {
                 if let response = responseItems.firstObject as? NSDictionary {
-                    
                     let product = Product()
                     product.name = response["Descricao"] as? String
                     product.id = GTIN
