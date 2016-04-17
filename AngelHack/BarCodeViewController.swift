@@ -92,7 +92,7 @@ extension BarCodeViewController: BarcodeReaderViewDelegate {
         print("Erro na leitura: ", error)
     }
 
-    //Método que captura o GTIN do código de barras 
+    //Método que captura o GTIN do código de barras e manda para a procura na API da GS1
     func barcodeReader(barcodeReader: BarcodeReaderView, didFinishReadingString info: String) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         self.barcodeReader?.stopCapturing()
@@ -111,7 +111,7 @@ extension BarCodeViewController: AppDataDelegate {
         AppNotifications.hideLoadingIndicator()
         self.productModal.hidden = false
         imgCarrinho.hidden = true
-        self.navigationController?.title = "Teste"
+        self.navigationController?.title = "Scanner"
         self.productName.text = product.name!
         guard let img = product.image else {
             return

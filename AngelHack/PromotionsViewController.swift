@@ -66,8 +66,6 @@ extension PromotionsViewController: UITableViewDataSource {
             vc.promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
             
             self.navigationController?.pushViewController(vc, animated: true)
-            
-            print("Gerando o voucher")
         }
         
         voucher.backgroundColor = UIColor ( red: 0.0, green: 0.6416, blue: 0.0002, alpha: 0.802919130067568 )

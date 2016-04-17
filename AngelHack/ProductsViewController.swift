@@ -23,7 +23,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         if AppData.sharedInstance.productsArray == nil {
             return 0
         }
-        //        return (AppData.sharedInstance.marketsArray?.count)!
         return (AppData.sharedInstance.productsArray?.count)!
     }
     
