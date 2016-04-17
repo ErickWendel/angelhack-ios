@@ -35,7 +35,8 @@ class PromotionsViewController: UIViewController {
     
     func refresh(sender:AnyObject)
     {
-        self.tableView.reloadData()
+        AppData.getMarkets()
+        AppData.getPromotions()
         self.refreshControl.endRefreshing()
     }
 }

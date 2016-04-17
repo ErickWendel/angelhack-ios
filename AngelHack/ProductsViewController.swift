@@ -27,7 +27,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func refresh(sender:AnyObject)
     {
-        self.tableView.reloadData()
+        AppData.getProducts()
         self.refreshControl.endRefreshing()
     }
 
