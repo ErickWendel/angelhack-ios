@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 
 class Market {
+    var objectID: String?
     var name: String?
-    var placemark: CLPlacemark?
+    var latitude: String?
+    var longitude: String?
+    var address: String?
 }

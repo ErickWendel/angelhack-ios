@@ -18,7 +18,9 @@ protocol AppDataDelegate {
 class AppData {
     static let sharedInstance = AppData()
     var delegate: AppDataDelegate?
+    var installationObjectID: String?
     var promotionsArray: [Promotion]?
+    var currentMarket: Market?
 
     class func getPromotions() {
         Alamofire.request(.GET, "https://httpbin.org/get")
@@ -42,12 +44,37 @@ class AppData {
     }
     
     class func sendProduct(product: Product) {
-        let object = PFObject(className: "Product")
-        object["name"] = product.name!
-        object["id"] = product.id!
-        object["image"] = product.image!
-        object.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
-            AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
+        let query = PFQuery(className: "Market")
+        query.getObjectInBackgroundWithId((AppData.sharedInstance.currentMarket?.objectID!)!) { (object: PFObject?, error: NSError?) in
+            let productObject = PFObject(className: "Product")
+            productObject["name"] = product.name!
+            productObject["id"] = product.id!
+            productObject["image"] = product.image!
+            let relation = productObject.relationForKey("market")
+            relation.addObject(object!)
+            productObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
+                AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
+            }
+        }
+    }
+    
+    class func getMarket() {
+        let query = PFQuery(className: "Market")
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+            if error != nil {
+                for object in objects! {
+                    let latitude = object["latitude"] as? String
+                    if latitude == AppLocation.sharedInstance.latitude! {
+                        let market = Market()
+                        market.objectID = object.objectId!
+                        market.name = object["name"] as? String
+                        market.latitude = latitude
+                        market.longitude = object["longitude"] as? String
+                        market.address = object["address"] as? String
+                        AppData.sharedInstance.currentMarket = market
+                    }
+                }
+            }
         }
     }
 }

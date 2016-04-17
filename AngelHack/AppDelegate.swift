@@ -17,14 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         Parse.enableLocalDatastore()
         Parse.setApplicationId("Oe0FNnApDBM1dPpjG5eAGzLr2eScSSaGLl4XtNdU",
                                clientKey: "zCMxjNIFsNbWM1dzJhB9lMa5WshT8goMMimPkmZ0")
-//        let configuration = ParseClientConfiguration {
-//            $0.applicationId = "Oe0FNnApDBM1dPpjG5eAGzLr2eScSSaGLl4XtNdU"
-//        }
-//        Parse.initializeWithConfiguration(configuration)
+        let installation = PFInstallation.currentInstallation()
+        AppData.sharedInstance.installationObjectID = installation.objectId!
+        installation.saveInBackground()
         return true
     }
 

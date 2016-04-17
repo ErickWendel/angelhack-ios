@@ -10,7 +10,10 @@ import Foundation
 import CoreLocation
 
 class AppLocation: NSObject {
+    static let sharedInstance = AppLocation()
     var locationManager: CLLocationManager
+    var latitude: String?
+    var longitude: String?
     
     override init () {
         self.locationManager = CLLocationManager()
@@ -26,5 +29,10 @@ extension AppLocation: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedAlways {
         }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.latitude = String(format: "%.5f", (locations[0].coordinate.latitude))
+        self.longitude = String(format: "%.5f", (locations[0].coordinate.longitude))
     }
 }
