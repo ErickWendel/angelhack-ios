@@ -23,6 +23,7 @@ class BarCodeViewController: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var imgCarrinho: UIImageView!
+    @IBOutlet weak var shutterCamera: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class BarCodeViewController: UIViewController {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
         imgCarrinho.layer.zPosition = 100
+        self.shutterCamera.layer.zPosition = 100
         self.barcodeReader!.startCapturing()
     }
     
