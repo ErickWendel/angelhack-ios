@@ -13,7 +13,7 @@ protocol BarcodeDelegate {
     func barcodeReaded(barcode: String)
 }
 
-class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, AppDataDelegate {
     
     let session = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer?
@@ -82,5 +82,8 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
     }
     
+    func productIsReadyToShow(product: Product) {
+        // mostrar o produto na string e imagem
+    }
 }
 

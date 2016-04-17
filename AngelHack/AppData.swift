@@ -9,8 +9,8 @@
 import Foundation
 import Alamofire
 
-class AppDataDelegate {
-    
+protocol AppDataDelegate {
+    func productIsReadyToShow(product: Product)
 }
 
 class AppData {
@@ -22,5 +22,20 @@ class AppData {
         Alamofire.request(.GET, "https://httpbin.org/get")
         let promotion = Promotion()
         promotion.name = "Fandangos 50%OFF"
+    }
+    
+    class func setProduct(json: NSDictionary, GTIN: String) {
+        if let responseDTO = json["ResponseDTO"] as? NSDictionary {
+            if let responseItems = responseDTO["ResponseItems"] as? NSArray {
+                if let response = responseItems.firstObject as? NSDictionary {
+                    
+                    let product = Product()
+                    product.name = response["Descricao"] as? String
+                    product.id = GTIN
+                    product.image = response["Imagem1"] as? String
+                    AppData.sharedInstance.delegate?.productIsReadyToShow(product)
+                }
+            }
+        }
     }
 }
