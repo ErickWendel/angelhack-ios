@@ -8,9 +8,11 @@
 
 import Foundation
 import Alamofire
+import Parse
 
 protocol AppDataDelegate {
     func productIsReadyToShow(product: Product)
+    func sendProductWithSuccess(success: Bool)
 }
 
 class AppData {
@@ -36,6 +38,16 @@ class AppData {
                     AppData.sharedInstance.delegate?.productIsReadyToShow(product)
                 }
             }
+        }
+    }
+    
+    class func sendProduct(product: Product) {
+        let object = PFObject(className: "Product")
+        object["name"] = product.name!
+        object["id"] = product.id!
+        object["image"] = product.image!
+        object.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
+            AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
         }
     }
 }

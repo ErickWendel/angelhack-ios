@@ -20,6 +20,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var previewLayer: AVCaptureVideoPreviewLayer?
     var delegate: BarcodeDelegate?
     let qrCodeFrameView: UIView = UIView()
+    var product: Product?
     
     @IBOutlet weak var productModal: UIView!
     @IBOutlet weak var productImage: UIImageView!
@@ -35,6 +36,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.productName.numberOfLines = 0
         let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         do {
             let inputDevice = try AVCaptureDeviceInput(device: captureDevice)
@@ -61,34 +63,45 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         AppData.sharedInstance.delegate = self
     }
     
+    func productModalHandle () {
+        session.stopRunning()
+        addPreviewLayer()
+        session.startRunning()
+        self.productModal.hidden = true
+        self.productImage.image = nil
+        self.productName.text = ""
+    }
     
     @IBAction func closeButtonPressed(sender: UIButton) {
-        session.startRunning()
+        productModalHandle()
     }
     
     @IBAction func checkButtonPressed(sender: UIButton) {
-        
+        AppData.sendProduct(self.product!)
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         for metadata in metadataObjects {
-            let readableObject = metadata as! AVMetadataMachineReadableCodeObject
-            let barCode = readableObject.stringValue
-            if !barCode.isEmpty {
-                let barCodeObject = previewLayer!.transformedMetadataObjectForMetadataObject(metadataObjects[0] as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
-                qrCodeFrameView.frame = barCodeObject.bounds
+            let readableObject = metadata as? AVMetadataMachineReadableCodeObject
+            if readableObject != nil {
+                let barCode = readableObject!.stringValue
+                if !barCode.isEmpty {
+                    let barCodeObject = previewLayer!.transformedMetadataObjectForMetadataObject(metadataObjects[0] as! AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
+                    qrCodeFrameView.frame = barCodeObject.bounds
+                    self.session.stopRunning()
+                    self.previewLayer?.removeFromSuperlayer()
+                    print(barCode)
+                    AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
+                    GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
+                    
+                }
 
-                self.session.stopRunning()
-                self.previewLayer?.removeFromSuperlayer()
-                print(barCode)
-                AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
-                GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
-                
             }
         }
     }
     
     func productIsReadyToShow(product: Product) {
+        self.product = product
         AppNotifications.hideLoadingIndicator()
         self.productModal.hidden = false
         self.navigationController?.title = "Teste"
@@ -105,6 +118,12 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         self.view.setNeedsDisplay()
 
+    }
+    
+    func sendProductWithSuccess(success: Bool) {
+        AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
+            self.productModalHandle()
+        }
     }
 }
 
