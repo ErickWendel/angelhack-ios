@@ -111,24 +111,36 @@ extension BarCodeViewController: AppDataDelegate {
     func productIsReadyToShow(product: Product) {
         self.product = product
         AppNotifications.hideLoadingIndicator()
-        self.productModal.hidden = false
-        imgCarrinho.hidden = true
-        self.navigationController?.title = "Scanner"
-        self.productName.text = product.name!
-        guard let img = product.image else {
-            return
+        if product.name == "" {
+            AppNotifications.showAlertController("Código do produto Inválido!", message: nil, presenter: self, okHandler: { (UIAlertAction) in
+                self.barcodeReader?.stopCapturing()
+                self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+                self.barcodeReader!.delegate = self
+                self.barcodeReader!.barCodeTypes = [.EAN13Code]
+                self.barcodeReader?.startCapturing()
+                self.view.insertSubview(self.barcodeReader!, belowSubview: self.productModal)
+            })
         }
-        guard let imgURL = NSURL(string: img) else {
-            return
+        else {
+            self.productModal.hidden = false
+            imgCarrinho.hidden = true
+            self.navigationController?.title = "Scanner"
+            self.productName.text = product.name!
+            guard let img = product.image else {
+                return
+            }
+            guard let imgURL = NSURL(string: img) else {
+                return
+            }
+            self.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
+            self.view.setNeedsDisplay()
+            self.barcodeReader?.stopCapturing()
+            self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+            self.barcodeReader!.delegate = self
+            self.barcodeReader!.barCodeTypes = [.EAN13Code]
+            self.barcodeReader?.startCapturing()
+            self.view.insertSubview(barcodeReader!, belowSubview: self.productModal)
         }
-        self.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
-        self.view.setNeedsDisplay()
-        self.barcodeReader?.stopCapturing()
-        self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-        self.barcodeReader!.delegate = self
-        self.barcodeReader!.barCodeTypes = [.EAN13Code]
-        self.barcodeReader?.startCapturing()
-        self.view.insertSubview(barcodeReader!, belowSubview: self.productModal)
     }
     
     func sendProductWithSuccess(success: Bool) {

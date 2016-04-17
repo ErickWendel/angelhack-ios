@@ -68,10 +68,16 @@ class AppData {
                 if let response = responseItems.firstObject as? NSDictionary {
                     let product = Product()
                     product.name = response["Descricao"] as? String
+                    if product.name == nil {
+                        product.name = ""
+                    }
                     product.id = GTIN
                     product.image = response["Imagem1"] as? String
                     if product.image == nil {
                         product.image = response["UrlFoto1"] as? String
+                        if product.image == nil {
+                            product.image = ""
+                        }
                     }
                     AppData.sharedInstance.delegate?.productIsReadyToShow(product)
                 }

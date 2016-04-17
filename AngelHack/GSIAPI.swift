@@ -30,6 +30,7 @@ class GSIAPI: NSObject {
                 AppData.setProduct(JSON as! NSDictionary, GTIN: code)
             case .Failure(let error):
                 print("error \(error)")
+                
             }
         }
     }
