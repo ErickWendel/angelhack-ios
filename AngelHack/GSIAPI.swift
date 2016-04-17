@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 //typealias ServiceResponse = (JSON, NSError?) -> Void
 
@@ -18,48 +19,24 @@ class GSIAPI: NSObject {
         print(code)
         let baseURL = "http://inbar-producao-ws.azurewebsites.net/search"
         
-        let request = NSMutableURLRequest(URL: NSURL(string: baseURL)!)
-        let session = NSURLSession.sharedSession()
         
-        request.HTTPMethod = "POST"
+        let header = ["secret":"62a7970e-1a72-494d-a27a-90d15cfba392",
+                      "deviceid": "hackathon-team-01188",
+                      "cache-control":"no-cache"]
+                      //"content-type" : "application/x-www-form-urlencoded"
         
-        do {
-            let json = ["codeType": "GTIN", "code": code]
-            let data = try NSJSONSerialization.dataWithJSONObject(json, options: [])
         
-            request.timeoutInterval = 60
-            request.HTTPBody = data
-            request.addValue("62a7970e-1a72-494d-a27a-90d15cfba392", forHTTPHeaderField: "secret")
-            request.addValue("hackathon-team-01188", forHTTPHeaderField: "deviceid")
-            request.addValue("no-cache", forHTTPHeaderField: "cache-control")
-            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
-            print(request)
-            var finalResult: NSDictionary?
-            let task = session.dataTaskWithRequest(request) { data, response, error -> Void in
-                guard data != nil else {
-                    print("no data found: \(error)")
-                    return
-                }
-            
-                do {
-                    let jsonResult: NSDictionary! = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? NSDictionary
-                
-                    if jsonResult != nil {
-                        print(jsonResult)
-                        finalResult = jsonResult
-                    }
-                
-                } catch let err {
-                    print("Errorrrrrrrr \(err)")
-                }
-            
-            
+        let parameters = ["code" : code,
+                          "codeType" : "GTIN"]
+        
+        
+        Alamofire.request(.POST, baseURL, parameters: parameters, encoding: .JSON, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .Success(let JSON):
+                print(JSON)
+            case .Failure(let error):
+                print("DEU RUIM!")
             }
-        
-        
-            task.resume()
-        } catch let err {
-            print(err)
         }
     }
 }
