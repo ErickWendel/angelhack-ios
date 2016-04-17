@@ -34,6 +34,28 @@ class BarCodeViewController: UIViewController {
         self.productName.numberOfLines = 0
     }
     
+    @IBAction func text(sender: AnyObject) {
+        let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
+        
+        var titleTextField: UITextField?
+        titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            titleTextField = textField
+            textField.placeholder = "0000000000000"
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
+        
+        titlePrompt.addAction(cancelAction)
+        
+        titlePrompt.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            self.barcodeReader?.stopCapturing()
+            self.barcodeReader?.removeFromSuperview()
+            AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
+            GSIAPI.sharedInstance.makeHTTPGetRequest(titleTextField!.text!)
+        }))
+        
+        self.presentViewController(titlePrompt, animated: true, completion: nil)
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self

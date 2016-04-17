@@ -347,7 +347,13 @@
                             <constraint firstItem="i0v-BH-epk" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="xOY-DQ-bPu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Barcode Scanner" id="76g-q6-6ck"/>
+                    <navigationItem key="navigationItem" title="Barcode Scanner" id="76g-q6-6ck">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fg8-ow-WEn">
+                            <connections>
+                                <action selector="text:" destination="HWs-OM-L29" id="hPf-qL-USd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imgCarrinho" destination="zSK-HP-hON" id="Wmo-1k-Cfn"/>
                         <outlet property="productImage" destination="nu2-aI-Fvp" id="d8q-AA-uvs"/>
