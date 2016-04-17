@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  BarScannerReaderSwift
+//  BarCodeViewController.swift
+//  AngelHack
 //
-//  Created by Rafael  Hieda on 30/06/15.
-//  Copyright (c) 2015 Rafael Hieda. All rights reserved.
+//  Created by Jean Paul Marinho on 16/04/16.
+//  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
 import UIKit

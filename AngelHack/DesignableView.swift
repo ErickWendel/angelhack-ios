@@ -1,9 +1,9 @@
 //
 //  DesignableView.swift
-//  Desafio1
+//  AngelHack
 //
-//  Created by Rafael Fernandes de Oliveira Carvalho on 3/4/15.
-//  Copyright (c) 2015 Rafael Fernandes de Oliveira Carvalho. All rights reserved.
+//  Created by Jean Paul Marinho on 16/04/16.
+//  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
 import Foundation

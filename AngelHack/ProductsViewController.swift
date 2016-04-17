@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  ProductsViewController.swift
 //  AngelHack
 //
 //  Created by Jean Paul Marinho on 16/04/16.

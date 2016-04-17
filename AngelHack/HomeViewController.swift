@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  AngelHack
 //
-//  Created by Vivian Dias on 16/04/16.
+//  Created by Jean Paul Marinho on 16/04/16.
 //  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
