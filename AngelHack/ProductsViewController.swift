@@ -53,7 +53,7 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 4
-    }
+    }  
 }
 
 extension ProductsViewController: AppDataDelegate {

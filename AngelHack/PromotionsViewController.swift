@@ -59,6 +59,31 @@ extension PromotionsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 4
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let voucher = UITableViewRowAction(style: .Normal, title: "Gerar Voucher") { action, index in
+            
+            
+            
+            
+            // aquiiii
+            
+            
+            
+            
+            
+            
+            print("Gerando o voucher")
+        }
+        
+        voucher.backgroundColor = UIColor ( red: 0.0, green: 0.6416, blue: 0.0002, alpha: 0.802919130067568 )
+        return [voucher]
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
+        return true
+    }
 }
 
 
