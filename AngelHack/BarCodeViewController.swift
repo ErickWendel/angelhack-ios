@@ -50,7 +50,7 @@ class BarCodeViewController: UIViewController {
         titleTextField?.textAlignment = NSTextAlignment.Center
         titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
             titleTextField = textField
-            textField.placeholder = "0000000000000"
+            textField.placeholder = ""
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
         titlePrompt.addAction(cancelAction)
@@ -75,6 +75,7 @@ class BarCodeViewController: UIViewController {
         productModalHandle()
     }
     
+    //Método que salva o produto depois de encontrado no servidor
     @IBAction func checkButtonPressed(sender: UIButton) {
         AppNotifications.showLoadingIndicator("Adicionando à sua lista...")
         AppData.sendProduct(self.product!)
@@ -84,11 +85,14 @@ class BarCodeViewController: UIViewController {
 
 
 extension BarCodeViewController: BarcodeReaderViewDelegate {
+    //Método para tratar o erro na leitura do código de barras
     func barcodeReader(barcodeReader: BarcodeReaderView, didFailReadingWithError error: NSError) {
-        // handle error
+        print("Erro na leitura: ", error)
     }
 
+    //Método que captura o GTIN do código de barras 
     func barcodeReader(barcodeReader: BarcodeReaderView, didFinishReadingString info: String) {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         self.barcodeReader?.stopCapturing()
         self.barcodeReader?.removeFromSuperview()
         AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
