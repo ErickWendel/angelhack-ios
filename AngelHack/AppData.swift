@@ -41,6 +41,8 @@ class AppData {
                 let product = Product()
                 if prod != nil {
                     product.image = prod!["image"] as? String
+                    product.id = prod!["id"] as? String
+                    product.name = prod!["name"] as? String
                     promotion.product = product
                     AppData.sharedInstance.promotionsArray?.append(promotion)
                     AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
@@ -58,6 +60,9 @@ class AppData {
                     product.name = response["Descricao"] as? String
                     product.id = GTIN
                     product.image = response["Imagem1"] as? String
+                    if product.image == nil {
+                        product.image = response["UrlFoto1"] as? String
+                    }
                     AppData.sharedInstance.delegate?.productIsReadyToShow(product)
                 }
             }

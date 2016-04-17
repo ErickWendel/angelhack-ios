@@ -2,7 +2,7 @@
 //  PromotionsViewController.swift
 //  AngelHack
 //
-//  Created by Jean Paul Marinho on 17/04/16.
+//  Created by Jean Paul Marinho on 16/04/16.
 //  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
@@ -62,16 +62,10 @@ extension PromotionsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let voucher = UITableViewRowAction(style: .Normal, title: "Gerar Voucher") { action, index in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Voucher") as! DetalhesPromoViewController
+            vc.promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
             
-            
-            
-            
-            // aquiiii
-            
-            
-            
-            
-            
+            self.navigationController?.pushViewController(vc, animated: true)
             
             print("Gerando o voucher")
         }

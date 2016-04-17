@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  AngelHack
 //
-//  Created by Vivian Dias on 16/04/16.
+//  Created by Jean Paul Marinho on 16/04/16.
 //  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
         AppData.sharedInstance.delegate = self
     }
     
+    //Sender para a view de leitura do código de barras
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
