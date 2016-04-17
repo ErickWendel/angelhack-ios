@@ -11,15 +11,14 @@ import CoreLocation
 
 class AppLocation: NSObject {
     static let sharedInstance = AppLocation()
-    var locationManager: CLLocationManager
+    var locationManager: CLLocationManager?
     var latitude: String?
     var longitude: String?
     
-    override init () {
+    func start () {
         self.locationManager = CLLocationManager()
-        super.init()
-        self.locationManager.delegate = self
-        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager!.delegate = self
+        self.locationManager!.requestAlwaysAuthorization()
     }
 }
 
@@ -28,11 +27,12 @@ class AppLocation: NSObject {
 extension AppLocation: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedAlways {
+            self.locationManager?.startUpdatingLocation()
         }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.latitude = String(format: "%.5f", (locations[0].coordinate.latitude))
-        self.longitude = String(format: "%.5f", (locations[0].coordinate.longitude))
+        self.latitude = String(format: "%.3f", (locations[0].coordinate.latitude))
+        self.longitude = String(format: "%.3f", (locations[0].coordinate.longitude))
     }
 }

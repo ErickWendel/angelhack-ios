@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YzY-aK-Cox">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YzY-aK-Cox">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -107,7 +107,7 @@
                                 </constraints>
                                 <state key="normal" image="LEITOR DE CODIGO DE BARRA"/>
                                 <connections>
-                                    <segue destination="HWs-OM-L29" kind="show" id="sq5-kS-r6r"/>
+                                    <action selector="barcodeButtonPressed:" destination="c5N-i6-7Ei" eventType="touchUpInside" id="oNY-rF-8U9"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-0l-YB5">
@@ -180,6 +180,7 @@
                         <outlet property="logoImage" destination="YFV-qe-dAc" id="I57-nH-lJX"/>
                         <outlet property="msgLbl" destination="RuX-E5-eF3" id="uAq-rU-Hm5"/>
                         <outlet property="tableView" destination="fcT-0l-YB5" id="s9T-YS-UzT"/>
+                        <segue destination="HWs-OM-L29" kind="show" identifier="toBarcodeScanner" id="huC-Kx-iCI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jhG-19-gTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,11 +199,11 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrinho" translatesAutoresizingMaskIntoConstraints="NO" id="zSK-HP-hON">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="carrinho" translatesAutoresizingMaskIntoConstraints="NO" id="zSK-HP-hON">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
-                                <rect key="frame" x="0.0" y="351" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="287" width="600" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-C8-39A" userLabel="Black Background">
                                         <rect key="frame" x="0.0" y="27" width="600" height="173"/>
@@ -383,6 +384,9 @@
         <image name="LEITOR DE CODIGO DE BARRA" width="1871" height="1237"/>
         <image name="LOGO" width="2090" height="1193"/>
         <image name="background" width="1606" height="2363"/>
+        <image name="carrinho" width="1500" height="1125"/>
+        <image name="icon-cancel-color" width="50" height="50"/>
+        <image name="icon-check-color" width="50" height="50"/>
         <image name="tab_home" width="25" height="25"/>
         <image name="tab_home_filled" width="25" height="25"/>
         <image name="tab_promotion" width="25" height="25"/>

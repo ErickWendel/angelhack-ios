@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppLocation.sharedInstance.start()
         tableView.delegate = self
         barcodeButton.alpha = 0
         tableView.alpha = 0
@@ -40,6 +41,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func barcodeButtonPressed(sender: UIButton) {
+        AppData.getMarket()
+        performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

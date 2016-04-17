@@ -31,6 +31,7 @@
 		A219EA3C1CC2F82C00C437C1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3B1CC2F82C00C437C1 /* SystemConfiguration.framework */; };
 		A219EA3E1CC2F83300C437C1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3D1CC2F83300C437C1 /* libz.tbd */; };
 		A219EA401CC2F83C00C437C1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */; };
+		A229737E1CC34C740060DE4A /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229737D1CC34C740060DE4A /* AppNotifications.swift */; };
 		A2845EFC1CC2DDE500791CC8 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */; };
 		A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845F001CC2DFC600791CC8 /* AppData.swift */; };
 		A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 		A219EA3B1CC2F82C00C437C1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A219EA3D1CC2F83300C437C1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A229737D1CC34C740060DE4A /* AppNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		A2845F001CC2DFC600791CC8 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A2B3CE411CC2A554004ABBAA /* AngelHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngelHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 		A2B3CE561CC2A56F004ABBAA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A229737D1CC34C740060DE4A /* AppNotifications.swift */,
 				A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */,
 				A2B3CE4B1CC2A554004ABBAA /* Assets.xcassets */,
 				A2B3CE4D1CC2A554004ABBAA /* LaunchScreen.storyboard */,
@@ -343,6 +346,7 @@
 				A2845EFC1CC2DDE500791CC8 /* PromotionViewController.swift in Sources */,
 				A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */,
 				A219EA2A1CC2F42100C437C1 /* Product.swift in Sources */,
+				A229737E1CC34C740060DE4A /* AppNotifications.swift in Sources */,
 				44E688501CC31EB10082719A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

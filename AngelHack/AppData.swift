@@ -61,7 +61,7 @@ class AppData {
     class func getMarket() {
         let query = PFQuery(className: "Market")
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            if error != nil {
+            if error == nil {
                 for object in objects! {
                     let latitude = object["latitude"] as? String
                     if latitude == AppLocation.sharedInstance.latitude! {
