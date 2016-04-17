@@ -302,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrinho" translatesAutoresizingMaskIntoConstraints="NO" id="zSK-HP-hON">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
                                 <rect key="frame" x="0.0" y="287" width="400" height="200"/>
