@@ -327,7 +327,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shutter_camera" translatesAutoresizingMaskIntoConstraints="NO" id="NFa-Lc-MlE">
-                                <rect key="frame" x="66" y="79" width="268" height="200"/>
+                                <rect key="frame" x="66" y="57" width="268" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="268" id="UHG-X2-hrg"/>
                                     <constraint firstAttribute="width" secondItem="NFa-Lc-MlE" secondAttribute="height" multiplier="67:50" id="ff2-QI-Hgy"/>
@@ -339,7 +339,7 @@
                             <constraint firstItem="i0v-BH-epk" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="8Fm-Oz-3ZA"/>
                             <constraint firstItem="zSK-HP-hON" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leadingMargin" constant="-69" id="AsK-h9-E3d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zSK-HP-hON" secondAttribute="trailing" constant="-91" id="GDd-eW-Srn"/>
-                            <constraint firstItem="i0v-BH-epk" firstAttribute="top" secondItem="NFa-Lc-MlE" secondAttribute="bottom" constant="8" symbolic="YES" id="MWA-92-1CA"/>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="top" secondItem="NFa-Lc-MlE" secondAttribute="bottom" constant="30" id="MWA-92-1CA"/>
                             <constraint firstItem="zSK-HP-hON" firstAttribute="top" secondItem="Fqb-ym-9kL" secondAttribute="bottom" id="ObE-IX-BS8"/>
                             <constraint firstItem="NFa-Lc-MlE" firstAttribute="centerX" secondItem="i0v-BH-epk" secondAttribute="centerX" id="QFt-Vh-0FV"/>
                             <constraint firstItem="zSK-HP-hON" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="XfP-av-mCs"/>

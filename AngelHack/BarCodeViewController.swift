@@ -34,19 +34,26 @@ class BarCodeViewController: UIViewController {
         self.productName.numberOfLines = 0
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
+        imgCarrinho.layer.zPosition = 100
+        self.shutterCamera.layer.zPosition = 100
+        self.barcodeReader!.startCapturing()
+    }
+    
     @IBAction func text(sender: AnyObject) {
         let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
         
         var titleTextField: UITextField?
+        titleTextField?.keyboardType = UIKeyboardType.DecimalPad
+        titleTextField?.textAlignment = NSTextAlignment.Center
         titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
             titleTextField = textField
             textField.placeholder = "0000000000000"
         }
-        
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
-        
         titlePrompt.addAction(cancelAction)
-        
         titlePrompt.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             self.barcodeReader?.stopCapturing()
             self.barcodeReader?.removeFromSuperview()
@@ -55,13 +62,6 @@ class BarCodeViewController: UIViewController {
         }))
         
         self.presentViewController(titlePrompt, animated: true, completion: nil)
-    }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        AppData.sharedInstance.delegate = self
-        imgCarrinho.layer.zPosition = 100
-        self.shutterCamera.layer.zPosition = 100
-        self.barcodeReader!.startCapturing()
     }
     
     func productModalHandle () {
@@ -117,6 +117,8 @@ extension BarCodeViewController: AppDataDelegate {
         self.view.setNeedsDisplay()
         self.barcodeReader?.stopCapturing()
         self.barcodeReader = BarcodeReaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        self.barcodeReader!.delegate = self
+        self.barcodeReader!.barCodeTypes = [.EAN13Code]
         self.barcodeReader?.startCapturing()
         self.view.insertSubview(barcodeReader!, belowSubview: self.productModal)
     }
