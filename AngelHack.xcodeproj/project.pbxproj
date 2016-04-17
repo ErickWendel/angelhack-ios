@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		171311BB1CC374130077811F /* PromotionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171311BA1CC374130077811F /* PromotionsTableViewCell.swift */; };
+		171311BD1CC383D90077811F /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171311BC1CC383D90077811F /* AboutTableViewController.swift */; };
 		44E688501CC31EB10082719A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E6884F1CC31EB10082719A /* HomeViewController.swift */; };
 		60968FD3AB91AB995135ACCE /* Pods_AngelHack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6EDFC6FB76E42A887713E /* Pods_AngelHack.framework */; };
 		8C6CFEDC1CC2F5900016AF89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C6CFEDB1CC2F5900016AF89 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		103152B923BCF3C3CAC6033A /* Pods-AngelHack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHack/Pods-AngelHack.debug.xcconfig"; sourceTree = "<group>"; };
 		171311BA1CC374130077811F /* PromotionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionsTableViewCell.swift; sourceTree = "<group>"; };
+		171311BC1CC383D90077811F /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		38A6EDFC6FB76E42A887713E /* Pods_AngelHack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AngelHack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E6884F1CC31EB10082719A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8C6CFEDB1CC2F5900016AF89 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				A22E87AC1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift */,
 				171311BA1CC374130077811F /* PromotionsTableViewCell.swift */,
+				171311BC1CC383D90077811F /* AboutTableViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				8C6CFEE31CC2F68E0016AF89 /* BarCodeViewController.swift in Sources */,
 				A2845EFC1CC2DDE500791CC8 /* ProductsViewController.swift in Sources */,
 				A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */,
+				171311BD1CC383D90077811F /* AboutTableViewController.swift in Sources */,
 				A219EA2A1CC2F42100C437C1 /* Product.swift in Sources */,
 				A229737E1CC34C740060DE4A /* AppNotifications.swift in Sources */,
 				171311BB1CC374130077811F /* PromotionsTableViewCell.swift in Sources */,
