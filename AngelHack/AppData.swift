@@ -37,12 +37,14 @@ class AppData {
                 promotion.campaignName = object["campaignName"] as? String
                 promotion.price = object["price"] as? Float
                 
-                let prod = object["product"] as! PFObject
+                let prod = object["product"] as? PFObject
                 let product = Product()
-                product.image = prod["image"] as? String
-                promotion.product = product
-                AppData.sharedInstance.promotionsArray?.append(promotion)
-                AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
+                if prod != nil {
+                    product.image = prod!["image"] as? String
+                    promotion.product = product
+                    AppData.sharedInstance.promotionsArray?.append(promotion)
+                    AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
+                }
             }
         }
     }

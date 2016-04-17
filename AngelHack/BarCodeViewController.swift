@@ -97,9 +97,15 @@ extension BarCodeViewController: AppDataDelegate {
     
     func sendProductWithSuccess(success: Bool) {
         AppNotifications.hideLoadingIndicator()
-        AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
-            self.productModalHandle()
+        if success == true {
+            AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
+            }
         }
+        else {
+            AppNotifications.showAlertController("Item já existe no banco de dados. Por favor, adicione um item diferente", message: nil, presenter: self) { (UIAlertAction) in
+            }
+        }
+        self.productModalHandle()
     }
     
     func getMarketsWithSuccess(success: Bool) {
