@@ -1489,8 +1489,8 @@
         <image name="close" width="25" height="25"/>
         <image name="contactDevelopers" width="28" height="28"/>
         <image name="eu" width="165" height="165"/>
-        <image name="icon-cancel-color" width="50" height="50"/>
-        <image name="icon-check-color" width="50" height="50"/>
+        <image name="icon-cancel-color" width="1024" height="1024"/>
+        <image name="icon-check-color" width="1024" height="1024"/>
         <image name="juh" width="165" height="165"/>
         <image name="likeFacebook" width="28" height="28"/>
         <image name="products" width="25" height="25"/>
@@ -1501,6 +1501,7 @@
         <image name="scanner_filled" width="25" height="25"/>
         <image name="shareFacebook" width="28" height="28"/>
         <image name="shareTwitter" width="28" height="28"/>
+        <image name="shutter_camera" width="1024" height="760"/>
         <image name="tab_promotion" width="25" height="25"/>
         <image name="tab_promotion_filled" width="25" height="25"/>
         <image name="versionInfo" width="28" height="28"/>
