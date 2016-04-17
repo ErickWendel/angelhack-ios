@@ -38,6 +38,7 @@
 		A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */; };
 		A2B3CE4C1CC2A554004ABBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2B3CE4B1CC2A554004ABBAA /* Assets.xcassets */; };
 		A2B3CE4F1CC2A554004ABBAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2B3CE4D1CC2A554004ABBAA /* LaunchScreen.storyboard */; };
+		A2E1CBEF1CC37F1E00A18A79 /* PromotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E1CBEE1CC37F1E00A18A79 /* PromotionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		A2B3CE4B1CC2A554004ABBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2B3CE4E1CC2A554004ABBAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2B3CE501CC2A554004ABBAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2E1CBEE1CC37F1E00A18A79 /* PromotionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionsViewController.swift; sourceTree = "<group>"; };
 		AE1D6532C94A0B8A00164662 /* Pods-AngelHack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHack.release.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHack/Pods-AngelHack.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +158,7 @@
 		A2845EFF1CC2DE0400791CC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A2E1CBEE1CC37F1E00A18A79 /* PromotionsViewController.swift */,
 				44E6884F1CC31EB10082719A /* HomeViewController.swift */,
 				A2845EFB1CC2DDE500791CC8 /* ProductsViewController.swift */,
 				8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */,
@@ -350,6 +353,7 @@
 				A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */,
 				A2172E551CC2E59300DC7188 /* ProductDate.swift in Sources */,
 				A219EA2C1CC2F46F00C437C1 /* Market.swift in Sources */,
+				A2E1CBEF1CC37F1E00A18A79 /* PromotionsViewController.swift in Sources */,
 				A2172E531CC2E52000DC7188 /* Promotion.swift in Sources */,
 				8C6CFEE11CC2F5FD0016AF89 /* ProductDetailViewController.swift in Sources */,
 				8C6CFEE31CC2F68E0016AF89 /* BarCodeViewController.swift in Sources */,
