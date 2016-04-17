@@ -62,6 +62,9 @@ class AppData {
                     product.name = response["Descricao"] as? String
                     product.id = GTIN
                     product.image = response["Imagem1"] as? String
+                    if product.image == nil {
+                        product.image = response["UrlFoto1"] as? String
+                    }
                     AppData.sharedInstance.delegate?.productIsReadyToShow(product)
                 }
             }
