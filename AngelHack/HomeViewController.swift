@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         AppLocation.sharedInstance.start()
         tableView.delegate = self
+        tableView.dataSource = self
         barcodeButton.alpha = 0
         tableView.alpha = 0
         msgLbl.alpha = 0
@@ -39,10 +40,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
+        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
+        AppData.getMarkets()
+        AppData.getPromotions()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if AppData.sharedInstance.promotionsArray == nil {
+            return 0
+        }
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,7 +61,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("produto", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsTableViewCell", forIndexPath: indexPath) as! PromotionsTableViewCell
+        
+        let promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
+        let product = promotion.product
+        
+        cell.lblPromotion.text = promotion.campaignName
+        
+        let img = product!.image
+        
+        let imgURL = NSURL(string: img!)
+        
+        cell.imgPromotion.af_setImageWithURL(imgURL!, placeholderImage: UIImage(named: "placeholder"))
+        
+        self.view.setNeedsDisplay()
         
         return cell
     }
@@ -59,7 +83,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 0.1
     }
 }
-
 
 
 extension HomeViewController: AppDataDelegate {
