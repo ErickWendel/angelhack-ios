@@ -34,13 +34,14 @@ class BarCodeViewController: UIViewController {
         self.productName.numberOfLines = 0
     }
     
+    //
     @IBAction func text(sender: AnyObject) {
         let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
         
         var titleTextField: UITextField?
         titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
             titleTextField = textField
-            textField.placeholder = "0000000000000"
+            textField.placeholder = ""
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
@@ -56,6 +57,7 @@ class BarCodeViewController: UIViewController {
         
         self.presentViewController(titlePrompt, animated: true, completion: nil)
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
@@ -75,6 +77,7 @@ class BarCodeViewController: UIViewController {
         productModalHandle()
     }
     
+    //Método que salva o produto depois de encontrado no servidor
     @IBAction func checkButtonPressed(sender: UIButton) {
         AppNotifications.showLoadingIndicator("Adicionando à sua lista...")
         AppData.sendProduct(self.product!)
@@ -84,10 +87,12 @@ class BarCodeViewController: UIViewController {
 
 
 extension BarCodeViewController: BarcodeReaderViewDelegate {
+    //Método para tratar o erro na leitura do código de barras
     func barcodeReader(barcodeReader: BarcodeReaderView, didFailReadingWithError error: NSError) {
-        // handle error
+        print("Erro na leitura: ", error)
     }
 
+    //Método que captura o GTIN do código de barras 
     func barcodeReader(barcodeReader: BarcodeReaderView, didFinishReadingString info: String) {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         self.barcodeReader?.stopCapturing()

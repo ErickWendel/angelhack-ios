@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
         AppData.sharedInstance.delegate = self
     }
     
+    //Sender para a view de leitura do código de barras
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
