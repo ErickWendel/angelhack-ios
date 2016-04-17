@@ -63,6 +63,5 @@ extension ProductsViewController: AppDataDelegate {
     }
     
     func getPromotionsWithSuccess(success: Bool) {
-        
     }
 }

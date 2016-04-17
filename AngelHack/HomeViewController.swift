@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return (AppData.sharedInstance.promotionsArray?.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,6 +78,8 @@ extension HomeViewController: AppDataDelegate {
     }
     
     func getPromotionsWithSuccess(success: Bool) {
-        
+        if success == true {
+            self.tableView.reloadData()
+        }
     }
 }
