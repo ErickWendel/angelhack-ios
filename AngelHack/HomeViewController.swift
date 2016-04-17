@@ -21,16 +21,52 @@ class HomeViewController: UIViewController {
         msgLbl.alpha = 0
         var t = CGAffineTransformIdentity
         t = CGAffineTransformTranslate(t, 0, self.view.frame.height / 2 - self.logoImage.frame.height)
-        t = CGAffineTransformScale(t, 1.5, 1.5)
+        t = CGAffineTransformScale(t, 1.1, 1.1)
         self.logoImage.transform = t
         UIView.animateWithDuration(1.0) {
             self.logoImage.transform = CGAffineTransformIdentity
-            self.barcodeButton.alpha = 1
-            self.msgLbl.alpha = 1
+            UIView.animateWithDuration(1.0, animations: {
+                self.barcodeButton.alpha = 1
+                self.msgLbl.alpha = 1
+            })
+
         }
+        AppNotifications.showLoadingIndicator("Carregando dados de mercados...")
+        AppData.getMarkets()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
+    }
+}
+
+
+
+extension HomeViewController: AppDataDelegate {
+    func productIsReadyToShow(product: Product) {
+        
+    }
+    
+    func sendProductWithSuccess(success: Bool) {
+        
+    }
+    
+    func getProductsWithSuccess(success: Bool) {
+        
+    }
+    
+    func getMarketsWithSuccess(success: Bool) {
+        if success == true {
+            AppNotifications.hideLoadingIndicator()
+        }
+    }
+    
+    func getPromotionsWithSuccess(success: Bool) {
+        
     }
 }

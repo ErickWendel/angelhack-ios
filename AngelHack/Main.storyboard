@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YzY-aK-Cox">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F18b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YzY-aK-Cox">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -315,9 +315,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zSK-HP-hON" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="BZE-v1-qp9"/>
+                            <constraint firstItem="zSK-HP-hON" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" constant="-49" id="BZE-v1-qp9"/>
                             <constraint firstItem="zSK-HP-hON" firstAttribute="top" secondItem="Fqb-ym-9kL" secondAttribute="bottom" id="D3k-Gu-cCu"/>
-                            <constraint firstAttribute="trailing" secondItem="zSK-HP-hON" secondAttribute="trailing" id="Fvy-d5-clY"/>
+                            <constraint firstAttribute="trailing" secondItem="zSK-HP-hON" secondAttribute="trailing" constant="-71" id="Fvy-d5-clY"/>
                             <constraint firstItem="NUM-ED-8e4" firstAttribute="top" secondItem="zSK-HP-hON" secondAttribute="bottom" id="Gg2-13-zym"/>
                             <constraint firstItem="i0v-BH-epk" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="LhV-Ax-UsS"/>
                             <constraint firstItem="i0v-BH-epk" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="a2A-Oc-yzy"/>
