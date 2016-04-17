@@ -28,10 +28,42 @@ class HomeViewController: UIViewController {
             self.barcodeButton.alpha = 1
             self.msgLbl.alpha = 1
         }
+        AppNotifications.showLoadingIndicator("Carregando dados de mercados...")
         AppData.getMarkets()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
+    }
+}
+
+
+
+extension HomeViewController: AppDataDelegate {
+    func productIsReadyToShow(product: Product) {
+        
+    }
+    
+    func sendProductWithSuccess(success: Bool) {
+        
+    }
+    
+    func getProductsWithSuccess(success: Bool) {
+        
+    }
+    
+    func getMarketsWithSuccess(success: Bool) {
+        if success == true {
+            AppNotifications.hideLoadingIndicator()
+        }
+    }
+    
+    func getPromotionsWithSuccess(success: Bool) {
+        
     }
 }
