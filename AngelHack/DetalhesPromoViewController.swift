@@ -17,17 +17,21 @@ class DetalhesPromoViewController: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     
     var promotion: Promotion?
+    var code: String?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        code = (promotion?.product?.id)! + PFInstallation.currentInstallation().installationId
+        self.nameLbl.text = self.promotion?.campaignName
+        self.priceLbl.text = String(format: "R$ %.2f", self.promotion!.price!)
+        createQRCode()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        createQRCode()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,10 +40,9 @@ class DetalhesPromoViewController: UIViewController {
     }
     
     func createQRCode(){
-        AppNotifications.showLoadingIndicator("Carregando QRCode")
+        AppNotifications.showLoadingIndicator("Gerando QRCode")
         
-        //let code: String = (promotion?.product?.id)! + PFInstallation.currentInstallation().installationId
-        let urlString = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=djjdjdjdjd"
+        let urlString = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=\(code!)"
         
         let url = NSURL(string: urlString)
         let request = NSURLRequest(URL: url!)
@@ -49,7 +52,7 @@ class DetalhesPromoViewController: UIViewController {
                 return
             } else {
                 self.qrcodeImg.image = UIImage(data: data!)
-                //self.barcodeLbl.text = code
+                self.barcodeLbl.text = data!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
                 AppNotifications.hideLoadingIndicator()
             }
         }

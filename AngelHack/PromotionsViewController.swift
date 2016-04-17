@@ -62,16 +62,10 @@ extension PromotionsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let voucher = UITableViewRowAction(style: .Normal, title: "Gerar Voucher") { action, index in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Voucher") as! DetalhesPromoViewController
+            vc.promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
             
-            
-            
-            
-            // aquiiii
-            
-            
-            
-            
-            
+            self.navigationController?.pushViewController(vc, animated: true)
             
             print("Gerando o voucher")
         }

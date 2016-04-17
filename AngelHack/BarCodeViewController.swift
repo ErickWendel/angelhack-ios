@@ -65,6 +65,7 @@ extension BarCodeViewController: BarcodeReaderViewDelegate {
     }
 
     func barcodeReader(barcodeReader: BarcodeReaderView, didFinishReadingString info: String) {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         self.barcodeReader?.stopCapturing()
         self.barcodeReader?.removeFromSuperview()
         AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
