@@ -67,15 +67,24 @@ class AppData {
     class func sendProduct(product: Product) {
         let query = PFQuery(className: "Market")
         query.getObjectInBackgroundWithId((AppData.sharedInstance.marketsArray?[AppData.sharedInstance.currentMarketIndex!].objectID!)!) { (object: PFObject?, error: NSError?) in
-            let productObject = PFObject(className: "Product")
-            productObject["name"] = product.name!
-            productObject["id"] = product.id!
-            productObject["image"] = product.image!
-            let relation = productObject.relationForKey("market")
-            relation.addObject(object!)
-            productObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
-                AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
-            }
+            let queryProduct = PFQuery(className: "Product")
+            queryProduct.whereKey("id", equalTo: product.id!)
+            queryProduct.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
+                if objects?.count == 0 {
+                    let productObject = PFObject(className: "Product")
+                    productObject["name"] = product.name!
+                    productObject["id"] = product.id!
+                    productObject["image"] = product.image!
+                    let relation = productObject.relationForKey("market")
+                    relation.addObject(object!)
+                    productObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) in
+                        AppData.sharedInstance.delegate?.sendProductWithSuccess(true)
+                    }
+                } else {
+                    print("ja existe")
+                    AppData.sharedInstance.delegate?.sendProductWithSuccess(false)
+                }
+            })
         }
     }
     
