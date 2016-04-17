@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  BarScannerReaderSwift
+//  BarCodeViewController.swift
+//  AngelHack
 //
-//  Created by Rafael  Hieda on 30/06/15.
-//  Copyright (c) 2015 Rafael Hieda. All rights reserved.
+//  Created by Jean Paul Marinho on 16/04/16.
+//  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
 import UIKit
@@ -23,6 +23,7 @@ class BarCodeViewController: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var imgCarrinho: UIImageView!
+    @IBOutlet weak var shutterCamera: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,33 @@ class BarCodeViewController: UIViewController {
         self.productName.numberOfLines = 0
     }
     
+    @IBAction func text(sender: AnyObject) {
+        let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
+        
+        var titleTextField: UITextField?
+        titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            titleTextField = textField
+            textField.placeholder = "0000000000000"
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil)
+        
+        titlePrompt.addAction(cancelAction)
+        
+        titlePrompt.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            self.barcodeReader?.stopCapturing()
+            self.barcodeReader?.removeFromSuperview()
+            AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
+            GSIAPI.sharedInstance.makeHTTPGetRequest(titleTextField!.text!)
+        }))
+        
+        self.presentViewController(titlePrompt, animated: true, completion: nil)
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
         imgCarrinho.layer.zPosition = 100
+        self.shutterCamera.layer.zPosition = 100
         self.barcodeReader!.startCapturing()
     }
     

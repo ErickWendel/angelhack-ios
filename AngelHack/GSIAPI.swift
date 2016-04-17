@@ -1,9 +1,9 @@
 //
-//  CosmosAPI.swift
-//  testeBarCode
+//  GSIAPI.swift
+//  AngelHack
 //
-//  Created by Vivian Dias on 05/02/16.
-//  Copyright © 2016 Vivian Dias. All rights reserved.
+//  Created by Jean Paul Marinho on 16/04/16.
+//  Copyright © 2016 Jean Paul Marinho. All rights reserved.
 //
 
 import UIKit
