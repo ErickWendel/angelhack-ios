@@ -41,7 +41,7 @@ class BarCodeViewController: UIViewController {
         self.shutterCamera.layer.zPosition = 100
         self.barcodeReader!.startCapturing()
     }
-    
+
     @IBAction func text(sender: AnyObject) {
         let titlePrompt = UIAlertController(title: "Código de Barras", message: "Digite o número do código de barras", preferredStyle: .Alert)
         
