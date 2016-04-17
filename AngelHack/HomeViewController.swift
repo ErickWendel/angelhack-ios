@@ -8,20 +8,16 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var barcodeButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var msgLbl: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         AppLocation.sharedInstance.start()
-        tableView.delegate = self
-        tableView.dataSource = self
         barcodeButton.alpha = 0
-        tableView.alpha = 0
         msgLbl.alpha = 0
         var t = CGAffineTransformIdentity
         t = CGAffineTransformTranslate(t, 0, self.view.frame.height / 2 - self.logoImage.frame.height)
@@ -30,82 +26,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UIView.animateWithDuration(1.0) {
             self.logoImage.transform = CGAffineTransformIdentity
             self.barcodeButton.alpha = 1
-            self.tableView.alpha = 1
             self.msgLbl.alpha = 1
         }
-        AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
-        AppData.getMarkets()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        AppData.sharedInstance.delegate = self
-        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
-        AppData.getMarkets()
-        AppData.getPromotions()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if AppData.sharedInstance.promotionsArray == nil {
-            return 0
-        }
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (AppData.sharedInstance.promotionsArray?.count)!
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsTableViewCell", forIndexPath: indexPath) as! PromotionsTableViewCell
-        
-        let promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
-        let product = promotion.product
-        
-        cell.lblPromotion.text = promotion.campaignName
-        
-        let img = product!.image
-        
-        let imgURL = NSURL(string: img!)
-        
-        cell.imgPromotion.af_setImageWithURL(imgURL!, placeholderImage: UIImage(named: "placeholder"))
-        
-        self.view.setNeedsDisplay()
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.1
-    }
-}
-
-
-extension HomeViewController: AppDataDelegate {
-    func productIsReadyToShow(product: Product) {
-        
-    }
-    
-    func sendProductWithSuccess(success: Bool) {
-        
-    }
-
-    func getMarketsWithSuccess(success: Bool) {
-        AppNotifications.hideLoadingIndicator()
-        if success == true {
-        }
-    }
-    
-    func getPromotionsWithSuccess(success: Bool) {
-        if success == true {
-            self.tableView.reloadData()
-        }
-    }
-    
-    func getProductsWithSuccess(success: Bool) {
     }
 }
