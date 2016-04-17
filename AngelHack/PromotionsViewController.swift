@@ -11,17 +11,32 @@ import UIKit
 class PromotionsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.tintColor = UIColor.whiteColor()
+        let attributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.systemFontOfSize(17)]
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Puxe para atualizar...", attributes: attributes)
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl)
         AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
         AppData.getMarkets()
         AppData.getPromotions()
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
 }
 
