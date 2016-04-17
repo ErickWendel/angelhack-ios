@@ -13,6 +13,7 @@ import Parse
 protocol AppDataDelegate {
     func productIsReadyToShow(product: Product)
     func sendProductWithSuccess(success: Bool)
+    func getMarketWithSuccess(success: Bool)
 }
 
 class AppData {
@@ -72,6 +73,7 @@ class AppData {
                         market.longitude = object["longitude"] as? String
                         market.address = object["address"] as? String
                         AppData.sharedInstance.currentMarket = market
+                        AppData.sharedInstance.delegate?.getMarketWithSuccess(true)
                     }
                 }
             }

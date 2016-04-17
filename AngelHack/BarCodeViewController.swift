@@ -129,5 +129,8 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             self.productModalHandle()
         }
     }
+    
+    func getMarketWithSuccess(success: Bool) {
+    }
 }
 

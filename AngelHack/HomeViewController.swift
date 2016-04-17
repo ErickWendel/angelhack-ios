@@ -22,7 +22,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         barcodeButton.alpha = 0
         tableView.alpha = 0
         msgLbl.alpha = 0
-        
         var t = CGAffineTransformIdentity
         t = CGAffineTransformTranslate(t, 0, self.view.frame.height / 2 - self.logoImage.frame.height)
         t = CGAffineTransformScale(t, 1.5, 1.5)
@@ -32,20 +31,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.barcodeButton.alpha = 1
             self.tableView.alpha = 1
             self.msgLbl.alpha = 1
-            
         }
-        
-        // Do any additional setup after loading the view.
     }
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
+        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
         AppData.getMarket()
-        performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,16 +57,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+extension HomeViewController: AppDataDelegate {
+    func productIsReadyToShow(product: Product) {
+        
     }
-    */
+    
+    func sendProductWithSuccess(success: Bool) {
+        
+    }
 
+    func getMarketWithSuccess(success: Bool) {
+        AppNotifications.hideLoadingIndicator()
+        if success == true {
+            performSegueWithIdentifier("toBarcodeScanner", sender: nil)
+        }
+    }
 }

@@ -153,10 +153,10 @@
 		A2845EFF1CC2DE0400791CC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */,
-				8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */,
-				8C6CFEE01CC2F5FD0016AF89 /* ProductDetailViewController.swift */,
 				44E6884F1CC31EB10082719A /* HomeViewController.swift */,
+				8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */,
+				A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */,
+				8C6CFEE01CC2F5FD0016AF89 /* ProductDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
