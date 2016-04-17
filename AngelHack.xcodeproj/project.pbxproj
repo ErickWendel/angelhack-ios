@@ -266,7 +266,7 @@
 				TargetAttributes = {
 					A2B3CE401CC2A554004ABBAA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = YUL27X4ZWF;
+						DevelopmentTeam = M8QL9J43GR;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -493,7 +493,7 @@
 				);
 				INFOPLIST_FILE = AngelHack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Promoon--.AngelHack";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Promoon--.AngelHack2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -512,7 +512,7 @@
 				);
 				INFOPLIST_FILE = AngelHack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Promoon--.AngelHack";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Promoon--.AngelHack2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
