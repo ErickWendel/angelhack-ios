@@ -30,7 +30,7 @@
                                     <inset key="sectionInset" minX="22" minY="10" maxX="22" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PromotionCollectionViewCell" id="UCi-Kg-B80" customClass="ProductsCollectionViewCell" customModule="AngelHack" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="UCi-Kg-B80" customClass="ProductsCollectionViewCell" customModule="AngelHack" customModuleProvider="target">
                                         <rect key="frame" x="22" y="79" width="155" height="175"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -136,10 +136,6 @@
                                     <rect key="frame" x="0.0" y="264" width="400" height="5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
-                                <connections>
-                                    <outlet property="dataSource" destination="RNq-Fs-Lnn" id="FfO-2U-n1T"/>
-                                    <outlet property="delegate" destination="RNq-Fs-Lnn" id="KKP-lo-Qon"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

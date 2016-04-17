@@ -82,4 +82,7 @@ extension HomeViewController: AppDataDelegate {
             self.tableView.reloadData()
         }
     }
+    
+    func getProductsWithSuccess(success: Bool) {
+    }
 }

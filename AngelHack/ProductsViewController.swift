@@ -21,6 +21,8 @@ class ProductsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
+        AppNotifications.showLoadingIndicator("Carregando Produtos...")
+        AppData.getProducts()
     }
 }
 
@@ -28,6 +30,9 @@ class ProductsViewController: UIViewController {
 
 extension ProductsViewController: UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        if AppData.sharedInstance.productsArray?.count == 0 {
+            
+        }
         return (AppData.sharedInstance.marketsArray?.count)!
     }
     
@@ -36,7 +41,13 @@ extension ProductsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PromotionCollectionViewCell", forIndexPath: indexPath) as! ProductsCollectionViewCell
+        let product = AppData.sharedInstance.productsArray?[0]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ProductsCollectionViewCell
+        guard let imgURL = NSURL(string: (product?.image)!) else {
+            return UICollectionViewCell()
+        }
+        cell.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
+        cell.label.text = product?.name!
         return cell
     }
 }
@@ -63,5 +74,12 @@ extension ProductsViewController: AppDataDelegate {
     }
     
     func getPromotionsWithSuccess(success: Bool) {
+    }
+    
+    func getProductsWithSuccess(success: Bool) {
+        AppNotifications.hideLoadingIndicator()
+        if success == true {
+            self.collectionView.reloadData()
+        }
     }
 }

@@ -13,6 +13,7 @@ import Parse
 protocol AppDataDelegate {
     func productIsReadyToShow(product: Product)
     func sendProductWithSuccess(success: Bool)
+    func getProductsWithSuccess(success: Bool)
     func getMarketsWithSuccess(success: Bool)
     func getPromotionsWithSuccess(success: Bool)
 }
@@ -80,12 +81,13 @@ class AppData {
                 product.id = object.objectId
                 AppData.sharedInstance.productsArray!.append(product)
             }
-            
+            AppData.sharedInstance.delegate?.getProductsWithSuccess(true)
         }
         
     }
     
     class func getMarkets() {
+        AppData.sharedInstance.marketsArray = Array()
         let query = PFQuery(className: "Market")
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             if error == nil {
