@@ -17,6 +17,11 @@ class PromotionViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
+    }
 }
 
 
@@ -40,4 +45,24 @@ extension PromotionViewController: UICollectionViewDataSource {
 
 extension PromotionViewController: UICollectionViewDelegate {
     
+}
+
+
+
+extension PromotionViewController: AppDataDelegate {
+    func productIsReadyToShow(product: Product) {
+        
+    }
+    
+    func sendProductWithSuccess(success: Bool) {
+        
+    }
+    
+    func getMarketWithSuccess(success: Bool) {
+        
+    }
+    
+    func getPromotionsWithSuccess(success: Bool) {
+        
+    }
 }
