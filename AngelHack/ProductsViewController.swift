@@ -29,9 +29,10 @@ class ProductsViewController: UIViewController {
 
 
 extension ProductsViewController: UICollectionViewDataSource {
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        if AppData.sharedInstance.productsArray?.count == 0 {
-            
+        if AppData.sharedInstance.productsArray == nil {
+            return 0
         }
         return (AppData.sharedInstance.marketsArray?.count)!
     }
