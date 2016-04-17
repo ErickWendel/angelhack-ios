@@ -9,9 +9,9 @@
 import Foundation
 
 class Promotion {
-    var name: String?
-    var market: Market?
+    var campaignName: String?
     var price: Float?
+    var market: Market?
     var product: Product?
     var productDate: ProductDate?
     

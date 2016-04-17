@@ -76,4 +76,8 @@ extension HomeViewController: AppDataDelegate {
             performSegueWithIdentifier("toBarcodeScanner", sender: nil)
         }
     }
+    
+    func getPromotionsWithSuccess(success: Bool) {
+        
+    }
 }

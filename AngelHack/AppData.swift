@@ -14,6 +14,7 @@ protocol AppDataDelegate {
     func productIsReadyToShow(product: Product)
     func sendProductWithSuccess(success: Bool)
     func getMarketWithSuccess(success: Bool)
+    func getPromotionsWithSuccess(success: Bool)
 }
 
 class AppData {
@@ -24,9 +25,16 @@ class AppData {
     var currentMarket: Market?
 
     class func getPromotions() {
-        Alamofire.request(.GET, "https://httpbin.org/get")
-        let promotion = Promotion()
-        promotion.name = "Fandangos 50%OFF"
+        AppData.sharedInstance.promotionsArray = Array()
+        let query = PFQuery(className: "Promotion")
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+            for object in objects! {
+                let promotion = Promotion()
+                promotion.campaignName = object["campaignName"] as? String
+                promotion.price = object["price"] as? Float
+                AppData.sharedInstance.promotionsArray?.append(promotion)
+            }
+        }
     }
     
     class func setProduct(json: NSDictionary, GTIN: String) {
