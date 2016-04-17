@@ -4,5 +4,6 @@ use_frameworks!
 
 target 'AngelHack' do
 pod 'Alamofire'
+pod 'AlamofireImage'
 end
 
