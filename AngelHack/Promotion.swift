@@ -9,15 +9,9 @@
 import Foundation
 
 class Promotion {
-    var name: String
+    var name: String?
     var market: Market?
-    var price: Float
+    var price: Float?
     var product: Product?
-    var productDate: ProductDate
-    
-    init(name: String, price: Float, productDate: ProductDate) {
-        self.name = name
-        self.price = price
-        self.productDate = productDate
-    }
+    var productDate: ProductDate?
 }

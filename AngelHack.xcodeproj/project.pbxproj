@@ -30,6 +30,7 @@
 		A219EA3C1CC2F82C00C437C1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3B1CC2F82C00C437C1 /* SystemConfiguration.framework */; };
 		A219EA3E1CC2F83300C437C1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3D1CC2F83300C437C1 /* libz.tbd */; };
 		A219EA401CC2F83C00C437C1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */; };
+		A256BA521CC31A4B00A07022 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A256BA511CC31A4B00A07022 /* AppNotifications.swift */; };
 		A2845EFC1CC2DDE500791CC8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845EFB1CC2DDE500791CC8 /* HomeViewController.swift */; };
 		A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845F001CC2DFC600791CC8 /* AppData.swift */; };
 		A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		A219EA3B1CC2F82C00C437C1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A219EA3D1CC2F83300C437C1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A256BA511CC31A4B00A07022 /* AppNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		A2845EFB1CC2DDE500791CC8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A2845F001CC2DFC600791CC8 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A2B3CE411CC2A554004ABBAA /* AngelHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngelHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 		A2B3CE561CC2A56F004ABBAA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A256BA511CC31A4B00A07022 /* AppNotifications.swift */,
 				A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */,
 				A2B3CE4B1CC2A554004ABBAA /* Assets.xcassets */,
 				A2B3CE4D1CC2A554004ABBAA /* LaunchScreen.storyboard */,
@@ -242,6 +245,7 @@
 				TargetAttributes = {
 					A2B3CE401CC2A554004ABBAA = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M8QL9J43GR;
 					};
 				};
 			};
@@ -329,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A256BA521CC31A4B00A07022 /* AppNotifications.swift in Sources */,
 				A2172E571CC2E6E900DC7188 /* AppLocation.swift in Sources */,
 				8C6CFEDE1CC2F5A10016AF89 /* GSIAPI.swift in Sources */,
 				A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */,
@@ -447,6 +452,8 @@
 			baseConfigurationReference = 103152B923BCF3C3CAC6033A /* Pods-AngelHack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -455,6 +462,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JeanPaulMarinho.AngelHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -463,6 +471,8 @@
 			baseConfigurationReference = AE1D6532C94A0B8A00164662 /* Pods-AngelHack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -471,6 +481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JeanPaulMarinho.AngelHack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

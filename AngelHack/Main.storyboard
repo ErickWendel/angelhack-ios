@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -106,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="484" y="1203"/>
         </scene>
-        <!--Bar Code View Controller-->
+        <!--Barcode Scanner-->
         <scene sceneID="hbr-qK-sbM">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="HWs-OM-L29" customClass="BarCodeViewController" customModule="AngelHack" customModuleProvider="target" sceneMemberID="viewController">
@@ -118,32 +119,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0v-BH-epk" userLabel="Product Modal">
                                 <rect key="frame" x="0.0" y="400" width="600" height="151"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-C8-39A" userLabel="Black Background">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSh-C8-39A" userLabel="Black Background">
                                         <rect key="frame" x="0.0" y="31" width="600" height="120"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voV-sU-XEF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voV-sU-XEF">
                                                 <rect key="frame" x="184" y="49" width="408" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu2-aI-Fvp">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nu2-aI-Fvp">
                                                 <rect key="frame" x="76" y="10" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="8HH-Ln-VKO"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="centerY" secondItem="voV-sU-XEF" secondAttribute="centerY" id="GwN-lO-fqV"/>
+                                            <constraint firstItem="voV-sU-XEF" firstAttribute="leading" secondItem="nu2-aI-Fvp" secondAttribute="trailing" constant="8" symbolic="YES" id="Ll1-0D-bnf"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="leading" secondItem="rSh-C8-39A" secondAttribute="leading" constant="76" id="S8I-Pb-3CF"/>
+                                            <constraint firstItem="voV-sU-XEF" firstAttribute="top" secondItem="rSh-C8-39A" secondAttribute="top" constant="49" id="SEL-NL-nZz"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="top" secondItem="rSh-C8-39A" secondAttribute="top" constant="10" id="TPu-Vm-R6X"/>
+                                            <constraint firstItem="nu2-aI-Fvp" firstAttribute="centerY" secondItem="rSh-C8-39A" secondAttribute="centerY" id="m4U-GI-Wo9"/>
+                                            <constraint firstItem="voV-sU-XEF" firstAttribute="trailing" secondItem="rSh-C8-39A" secondAttribute="trailingMargin" id="zXs-4W-AVs"/>
+                                        </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-se-VpT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-se-VpT">
                                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                                         <state key="normal" image="icon-cancel-color"/>
                                         <connections>
                                             <action selector="closeButtonPressed:" destination="HWs-OM-L29" eventType="touchUpInside" id="gy2-X9-TCw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anb-I0-FWa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anb-I0-FWa">
                                         <rect key="frame" x="542" y="8" width="50" height="50"/>
                                         <state key="normal" image="icon-check-color"/>
                                         <connections>
@@ -152,12 +165,30 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="leading" secondItem="i0v-BH-epk" secondAttribute="leadingMargin" id="CvA-3N-bRT"/>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="top" secondItem="i0v-BH-epk" secondAttribute="topMargin" id="LNK-AG-ccT"/>
+                                    <constraint firstItem="9Vv-se-VpT" firstAttribute="top" secondItem="Anb-I0-FWa" secondAttribute="top" id="SWz-kg-GpG"/>
+                                    <constraint firstItem="Anb-I0-FWa" firstAttribute="trailing" secondItem="i0v-BH-epk" secondAttribute="trailingMargin" id="X1o-9X-ixp"/>
+                                    <constraint firstItem="rSh-C8-39A" firstAttribute="leading" secondItem="i0v-BH-epk" secondAttribute="leading" id="XWJ-g6-x54"/>
+                                    <constraint firstItem="rSh-C8-39A" firstAttribute="top" secondItem="i0v-BH-epk" secondAttribute="top" constant="31" id="ZtF-en-xuz"/>
+                                    <constraint firstAttribute="bottom" secondItem="rSh-C8-39A" secondAttribute="bottom" id="dbJ-Nq-4jF"/>
+                                    <constraint firstAttribute="trailing" secondItem="rSh-C8-39A" secondAttribute="trailing" id="pCx-zQ-zCw"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="bottom" secondItem="NUM-ED-8e4" secondAttribute="top" id="5JE-U8-9bd"/>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="leading" secondItem="1tx-1m-cY1" secondAttribute="leading" id="8GO-bI-EiE"/>
+                            <constraint firstItem="i0v-BH-epk" firstAttribute="top" secondItem="Fqb-ym-9kL" secondAttribute="bottom" constant="336" id="Cvr-qS-pX6"/>
+                            <constraint firstAttribute="trailing" secondItem="i0v-BH-epk" secondAttribute="trailing" id="fYM-ze-rjZ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Barcode Scanner" id="76g-q6-6ck"/>
                     <connections>
                         <outlet property="productImage" destination="nu2-aI-Fvp" id="d8q-AA-uvs"/>
+                        <outlet property="productModal" destination="i0v-BH-epk" id="ZFy-ms-8hx"/>
                         <outlet property="productName" destination="voV-sU-XEF" id="Zxo-fG-RYq"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var delegate: BarcodeDelegate?
     let qrCodeFrameView: UIView = UIView()
     
+    @IBOutlet weak var productModal: UIView!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     
@@ -49,18 +50,23 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             output.metadataObjectTypes = output.availableMetadataObjectTypes
             output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
             session.startRunning()
-
         } catch {
             print("error")
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppData.sharedInstance.delegate = self
     }
     
     
     @IBAction func closeButtonPressed(sender: UIButton) {
+        session.startRunning()
     }
     
     @IBAction func checkButtonPressed(sender: UIButton) {
+        
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
@@ -72,10 +78,9 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 qrCodeFrameView.frame = barCodeObject.bounds
 
                 self.session.stopRunning()
-//                let vc = storyboard?.instantiateViewControllerWithIdentifier("ProductDetailViewController")
-//                self.navigationController?.pushViewController(vc!, animated: true)
-//                self.delegate?.barcodeReaded(barCode)
+                self.previewLayer?.removeFromSuperlayer()
                 print(barCode)
+                AppNotifications.showLoadingIndicator("Comunicando-se com o servidor...")
                 GSIAPI.sharedInstance.makeHTTPGetRequest(barCode)
                 
             }
@@ -83,7 +88,14 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func productIsReadyToShow(product: Product) {
-        // mostrar o produto na string e imagem
+        AppNotifications.hideLoadingIndicator()
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.productModal.hidden = false
+            self.navigationController?.title = "Teste"
+            self.productName.text = product.name!
+            self.view.setNeedsDisplay()
+            //self.productImage.image = Al
+        }
     }
 }
 
