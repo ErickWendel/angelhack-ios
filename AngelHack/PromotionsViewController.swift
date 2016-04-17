@@ -14,8 +14,6 @@ class PromotionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         AppNotifications.showLoadingIndicator("Obtendo dados dos mercados...")
         AppData.getMarkets()
         AppData.getPromotions()
@@ -34,18 +32,19 @@ extension PromotionsViewController: UITableViewDataSource {
         if AppData.sharedInstance.promotionsArray == nil {
             return 0
         }
-        return 1
+        return (AppData.sharedInstance.promotionsArray?.count)!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (AppData.sharedInstance.promotionsArray?.count)!
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsTableViewCell", forIndexPath: indexPath) as! PromotionsTableViewCell
-        let promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
+        let promotion = AppData.sharedInstance.promotionsArray![indexPath.section]
         let product = promotion.product
         cell.lblPromotion.text = promotion.campaignName
+        cell.labelPrice.text = String(format: "R$ %.2f", promotion.price!)
         let img = product!.image
         let imgURL = NSURL(string: img!)
         cell.imgPromotion.af_setImageWithURL(imgURL!, placeholderImage: UIImage(named: "placeholder"))
@@ -53,8 +52,37 @@ extension PromotionsViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 4
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let voucher = UITableViewRowAction(style: .Normal, title: "Gerar Voucher") { action, index in
+            
+            
+            
+            
+            // aquiiii
+            
+            
+            
+            
+            
+            
+            print("Gerando o voucher")
+        }
+        
+        voucher.backgroundColor = UIColor ( red: 0.0, green: 0.6416, blue: 0.0002, alpha: 0.802919130067568 )
+        return [voucher]
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
+        return true
     }
 }
 
