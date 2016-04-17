@@ -77,6 +77,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func checkButtonPressed(sender: UIButton) {
+        AppNotifications.showLoadingIndicator("Adicionando à sua lista...")
         AppData.sendProduct(self.product!)
     }
     
@@ -121,6 +122,7 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func sendProductWithSuccess(success: Bool) {
+        AppNotifications.hideLoadingIndicator()
         AppNotifications.showAlertController("Item adicionado com sucesso", message: nil, presenter: self) { (UIAlertAction) in
             self.productModalHandle()
         }
