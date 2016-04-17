@@ -15,6 +15,9 @@ class AboutTableViewController: UITableViewController, MFMailComposeViewControll
     @IBOutlet weak var labelVersion: UILabel!
     
     let version: AnyObject! = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
+    @IBAction func close(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     @IBAction func likeFacebook(sender: AnyObject) {
         let facebookURL = NSURL(string: "fb://pages/1664258017164842")!
