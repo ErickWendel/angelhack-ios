@@ -44,14 +44,14 @@ class PromotionsViewController: UIViewController {
 
 extension PromotionsViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if AppData.sharedInstance.promotionsArray == nil {
             return 0
         }
         return (AppData.sharedInstance.promotionsArray?.count)!
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
