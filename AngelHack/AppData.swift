@@ -13,7 +13,7 @@ import Parse
 protocol AppDataDelegate {
     func productIsReadyToShow(product: Product)
     func sendProductWithSuccess(success: Bool)
-    func getMarketWithSuccess(success: Bool)
+    func getMarketsWithSuccess(success: Bool)
     func getPromotionsWithSuccess(success: Bool)
 }
 
@@ -22,6 +22,8 @@ class AppData {
     var delegate: AppDataDelegate?
     var installationObjectID: String?
     var promotionsArray: [Promotion]?
+    var productsArray: [Product]?
+    var marketsArray: [Market]?
     var currentMarket: Market?
 
     class func getPromotions() {
@@ -67,23 +69,40 @@ class AppData {
         }
     }
     
-    class func getMarket() {
+    class func getProducts() {
+        AppData.sharedInstance.productsArray = Array()
+        let query = PFQuery(className: "Product")
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+            for object in objects! {
+                let product = Product()
+                product.name = object["name"] as? String
+                product.image = object["image"] as? String
+                product.id = object.objectId
+                AppData.sharedInstance.productsArray!.append(product)
+            }
+            
+        }
+        
+    }
+    
+    class func getMarkets() {
         let query = PFQuery(className: "Market")
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             if error == nil {
                 for object in objects! {
                     let latitude = object["latitude"] as? String
+                    let market = Market()
+                    market.objectID = object.objectId!
+                    market.name = object["name"] as? String
+                    market.latitude = latitude
+                    market.longitude = object["longitude"] as? String
+                    market.address = object["address"] as? String
                     if latitude == AppLocation.sharedInstance.latitude! {
-                        let market = Market()
-                        market.objectID = object.objectId!
-                        market.name = object["name"] as? String
-                        market.latitude = latitude
-                        market.longitude = object["longitude"] as? String
-                        market.address = object["address"] as? String
                         AppData.sharedInstance.currentMarket = market
-                        AppData.sharedInstance.delegate?.getMarketWithSuccess(true)
                     }
+                    AppData.sharedInstance.marketsArray?.append(market)
                 }
+                AppData.sharedInstance.delegate?.getMarketsWithSuccess(true)
             }
         }
     }

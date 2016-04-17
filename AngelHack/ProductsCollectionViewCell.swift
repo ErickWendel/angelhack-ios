@@ -8,6 +8,8 @@
 
 import UIKit
 
-class PromotionCollectionViewCell: UICollectionViewCell {
+class ProductsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
 }

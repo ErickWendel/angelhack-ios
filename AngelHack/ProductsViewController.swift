@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PromotionViewController: UIViewController {
+class ProductsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,30 +26,30 @@ class PromotionViewController: UIViewController {
 
 
 
-extension PromotionViewController: UICollectionViewDataSource {
+extension ProductsViewController: UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return (AppData.sharedInstance.marketsArray?.count)!
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PromotionCollectionViewCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PromotionCollectionViewCell", forIndexPath: indexPath) as! ProductsCollectionViewCell
         return cell
     }
 }
 
 
 
-extension PromotionViewController: UICollectionViewDelegate {
+extension ProductsViewController: UICollectionViewDelegate {
     
 }
 
 
 
-extension PromotionViewController: AppDataDelegate {
+extension ProductsViewController: AppDataDelegate {
     func productIsReadyToShow(product: Product) {
         
     }
@@ -58,7 +58,7 @@ extension PromotionViewController: AppDataDelegate {
         
     }
     
-    func getMarketWithSuccess(success: Bool) {
+    func getMarketsWithSuccess(success: Bool) {
         
     }
     

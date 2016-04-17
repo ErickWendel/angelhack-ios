@@ -32,8 +32,8 @@
 		A219EA3E1CC2F83300C437C1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3D1CC2F83300C437C1 /* libz.tbd */; };
 		A219EA401CC2F83C00C437C1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */; };
 		A229737E1CC34C740060DE4A /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A229737D1CC34C740060DE4A /* AppNotifications.swift */; };
-		A22E87AD1CC35C3C00E61C87 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E87AC1CC35C3C00E61C87 /* PromotionCollectionViewCell.swift */; };
-		A2845EFC1CC2DDE500791CC8 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */; };
+		A22E87AD1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22E87AC1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift */; };
+		A2845EFC1CC2DDE500791CC8 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845EFB1CC2DDE500791CC8 /* ProductsViewController.swift */; };
 		A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2845F001CC2DFC600791CC8 /* AppData.swift */; };
 		A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */; };
 		A2B3CE4C1CC2A554004ABBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2B3CE4B1CC2A554004ABBAA /* Assets.xcassets */; };
@@ -67,8 +67,8 @@
 		A219EA3D1CC2F83300C437C1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A219EA3F1CC2F83C00C437C1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A229737D1CC34C740060DE4A /* AppNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
-		A22E87AC1CC35C3C00E61C87 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
-		A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
+		A22E87AC1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2845EFB1CC2DDE500791CC8 /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		A2845F001CC2DFC600791CC8 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		A2B3CE411CC2A554004ABBAA /* AngelHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngelHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B3CE441CC2A554004ABBAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		A2845EFE1CC2DDFD00791CC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A22E87AC1CC35C3C00E61C87 /* PromotionCollectionViewCell.swift */,
+				A22E87AC1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				44E6884F1CC31EB10082719A /* HomeViewController.swift */,
+				A2845EFB1CC2DDE500791CC8 /* ProductsViewController.swift */,
 				8C6CFEE21CC2F68E0016AF89 /* BarCodeViewController.swift */,
-				A2845EFB1CC2DDE500791CC8 /* PromotionViewController.swift */,
 				8C6CFEE01CC2F5FD0016AF89 /* ProductDetailViewController.swift */,
 			);
 			name = Controller;
@@ -340,14 +340,14 @@
 			files = (
 				A2172E571CC2E6E900DC7188 /* AppLocation.swift in Sources */,
 				8C6CFEDE1CC2F5A10016AF89 /* GSIAPI.swift in Sources */,
-				A22E87AD1CC35C3C00E61C87 /* PromotionCollectionViewCell.swift in Sources */,
+				A22E87AD1CC35C3C00E61C87 /* ProductsCollectionViewCell.swift in Sources */,
 				A2B3CE451CC2A554004ABBAA /* AppDelegate.swift in Sources */,
 				A2172E551CC2E59300DC7188 /* ProductDate.swift in Sources */,
 				A219EA2C1CC2F46F00C437C1 /* Market.swift in Sources */,
 				A2172E531CC2E52000DC7188 /* Promotion.swift in Sources */,
 				8C6CFEE11CC2F5FD0016AF89 /* ProductDetailViewController.swift in Sources */,
 				8C6CFEE31CC2F68E0016AF89 /* BarCodeViewController.swift in Sources */,
-				A2845EFC1CC2DDE500791CC8 /* PromotionViewController.swift in Sources */,
+				A2845EFC1CC2DDE500791CC8 /* ProductsViewController.swift in Sources */,
 				A2845F011CC2DFC600791CC8 /* AppData.swift in Sources */,
 				A219EA2A1CC2F42100C437C1 /* Product.swift in Sources */,
 				A229737E1CC34C740060DE4A /* AppNotifications.swift in Sources */,

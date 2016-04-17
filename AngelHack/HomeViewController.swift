@@ -37,11 +37,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         AppData.sharedInstance.delegate = self
+        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
+        AppData.getMarkets()
     }
     
     @IBAction func barcodeButtonPressed(sender: UIButton) {
-        AppNotifications.showLoadingIndicator("Obtendo dados do mercado atual...")
-        AppData.getMarket()
+        performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,10 +71,9 @@ extension HomeViewController: AppDataDelegate {
         
     }
 
-    func getMarketWithSuccess(success: Bool) {
+    func getMarketsWithSuccess(success: Bool) {
         AppNotifications.hideLoadingIndicator()
         if success == true {
-            performSegueWithIdentifier("toBarcodeScanner", sender: nil)
         }
     }
     
