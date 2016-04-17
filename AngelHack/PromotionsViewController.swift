@@ -56,13 +56,18 @@ extension PromotionsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PromotionsTableViewCell", forIndexPath: indexPath) as! PromotionsTableViewCell
-        let promotion = AppData.sharedInstance.promotionsArray![indexPath.section]
+        let promotion = AppData.sharedInstance.promotionsArray![indexPath.row]
         let product = promotion.product
         cell.lblPromotion.text = promotion.campaignName
         cell.labelPrice.text = String(format: "R$ %.2f", promotion.price!)
         let img = product!.image
         let imgURL = NSURL(string: img!)
         cell.imgPromotion.af_setImageWithURL(imgURL!, placeholderImage: UIImage(named: "placeholder"))
+        
+        
+        let market = promotion.market
+        cell.labelMarketName.text = market?.name
+        
         self.view.setNeedsDisplay()
         return cell
     }

@@ -33,19 +33,27 @@ class AppData {
         AppData.sharedInstance.promotionsArray = Array()
         let query = PFQuery(className: "Promotion")
         query.includeKey("product")
+        query.includeKey("market")
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             for object in objects! {
                 let promotion = Promotion()
                 promotion.campaignName = object["campaignName"] as? String
                 promotion.price = object["price"] as? Float
                 
+                let mark = object["market"] as? PFObject
+                let market = Market()
                 let prod = object["product"] as? PFObject
                 let product = Product()
-                if prod != nil {
+                if prod != nil && mark != nil {
+                    
+                    market.name = mark!["name"] as? String
+                    promotion.market = market
+                    
                     product.image = prod!["image"] as? String
                     product.id = prod!["id"] as? String
                     product.name = prod!["name"] as? String
                     promotion.product = product
+                    
                     AppData.sharedInstance.promotionsArray?.append(promotion)
                     AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
                 }

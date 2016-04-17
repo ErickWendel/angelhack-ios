@@ -13,4 +13,5 @@ class Product {
     var name: String?
     var id: String?
     var image: String?
+    var marketName: String?
 }
