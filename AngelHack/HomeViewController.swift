@@ -47,6 +47,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         performSegueWithIdentifier("toBarcodeScanner", sender: nil)
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if AppData.sharedInstance.promotionsArray == nil {
+            return 0
+        }
+        return 1
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (AppData.sharedInstance.promotionsArray?.count)!
     }
@@ -66,8 +73,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.imgPromotion.af_setImageWithURL(imgURL!, placeholderImage: UIImage(named: "placeholder"))
         
         self.view.setNeedsDisplay()
-
-        
         
         return cell
     }

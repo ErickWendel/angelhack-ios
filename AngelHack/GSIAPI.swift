@@ -26,7 +26,7 @@ class GSIAPI: NSObject {
         Alamofire.request(.POST, baseURL, parameters: parameters, encoding: .JSON, headers: header).responseJSON { (response) in
             switch response.result {
             case .Success(let JSON):
-                print(JSON)
+//                print(JSON)
                 AppData.setProduct(JSON as! NSDictionary, GTIN: code)
             case .Failure(let error):
                 print("error \(error)")

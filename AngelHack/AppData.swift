@@ -43,7 +43,6 @@ class AppData {
                 promotion.product = product
                 AppData.sharedInstance.promotionsArray?.append(promotion)
                 AppData.sharedInstance.delegate?.getPromotionsWithSuccess(true)
-                print(AppData.sharedInstance.promotionsArray)
             }
         }
     }
