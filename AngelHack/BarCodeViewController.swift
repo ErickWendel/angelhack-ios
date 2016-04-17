@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import AVFoundation 
+import AVFoundation
+import AlamofireImage
 
 protocol BarcodeDelegate {
     func barcodeReaded(barcode: String)
@@ -89,13 +90,21 @@ class BarCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     func productIsReadyToShow(product: Product) {
         AppNotifications.hideLoadingIndicator()
-        dispatch_async(dispatch_get_main_queue()) { 
-            self.productModal.hidden = false
-            self.navigationController?.title = "Teste"
-            self.productName.text = product.name!
-            self.view.setNeedsDisplay()
-            //self.productImage.image = Al
+        self.productModal.hidden = false
+        self.navigationController?.title = "Teste"
+        self.productName.text = product.name!
+        guard let img = product.image else {
+            return
         }
+        
+        guard let imgURL = NSURL(string: img) else {
+            return
+        }
+        
+        self.productImage.af_setImageWithURL(imgURL, placeholderImage: UIImage(named: "placeholder"))
+        
+        self.view.setNeedsDisplay()
+
     }
 }
 
