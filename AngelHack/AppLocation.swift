@@ -28,6 +28,8 @@ extension AppLocation: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedAlways {
             self.locationManager?.startUpdatingLocation()
+            AppNotifications.showLoadingIndicator("Carregando dados de mercados...")
+            AppData.getMarkets()
         }
     }
     

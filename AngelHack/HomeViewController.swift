@@ -31,8 +31,6 @@ class HomeViewController: UIViewController {
             })
 
         }
-        AppNotifications.showLoadingIndicator("Carregando dados de mercados...")
-        AppData.getMarkets()
     }
     
     override func viewDidAppear(animated: Bool) {
